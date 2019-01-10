@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../static/images/icon.JPG">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/updata.css">
+    <link rel="stylesheet" href="../static/css/styles.imageuploader.css">
+    <title>上传资料</title>
+</head>
+
+<body>
+    <header>
+        <img src="../static/images/logo.png" alt="" class="logo">
+        <ul class="list">
+            <li><a href="./updata.html">上传</a></li>
+            <li><a href="./modify.html">修订</a></li>
+            <li><a href="./history.html">查询</a></li>
+        </ul>
+        <div id="user">
+            <span>张三</span>
+            <a href="../templates/login.html">退出</a>
+        </div>
+    </header>
+    <div id="upload">
+        <div class="uploader__box js-uploader__box l-center-box">
+            <form action="后台提交的地址" method="POST">
+                <div class="uploader__contents">
+                    <label class="button button--secondary" for="fileinput">选择文件</label>
+                    <input id="fileinput" class="uploader__file-input" type="file" multiple value="Select Files">
+                </div>
+                <input class="button button--big-bottom" type="submit" value="Upload Selected Files">
+            </form>
+        </div>
+    </div>
+    <script src="../static/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/js/jquery.imageuploader.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var options = {};
+            $('.js-uploader__box').uploader({
+                'selectButtonCopy': '请选择或拖拽文件',
+                'instructionsCopy': '你可以选择或拖拽多个文件',
+                'submitButtonCopy': '上传选择的文件',
+                'furtherInstructionsCopy': '你可以选择或拖拽更多的文件',
+                'secondarySelectButtonCopy': '选择更多的文件'
+            });
+        }());
+    </script>
+</body>
+
+</html>

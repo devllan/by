@@ -1,0 +1,79 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/background.png);
+    background-size: cover;
+}
+
+/* 大框 ---------------------------------*/
+
+#all {
+    /* background-image: url(../images/background.png); */
+    width: 100%;
+    height: 725px;
+    position: relative;
+}
+
+#titleimg {
+    width: 567px;
+    height: 283px;
+    position: absolute;
+    top: 145px;
+    left: 165px;
+}
+
+#login {
+    width: 300px;
+    height: 280px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 900px;
+    top: 150px;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+}
+
+.name {
+    position: absolute;
+    width: 80%;
+    height: 30px;
+    top: 50px;
+    left: 10%;
+
+}
+
+.password {
+    position: absolute;
+    top: 100px;
+    height: 30px;
+    ;
+    width: 80%;
+    left: 28px;
+    left: 10%;
+}
+
+.submit {
+    width: 80%;
+    height: 45px;
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    color: white;
+    background-color: #169BD5;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 45px;
+    /* padding-top: 20px; */
+}
+#shengm{
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    color: rgba(0, 0, 0, 0.5);
+}
