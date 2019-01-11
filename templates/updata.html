@@ -3,26 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../static/images/icon.JPG">
+    <link rel="icon" href="/static/custom_visualizations/images/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/updata.css">
-    <link rel="stylesheet" href="../static/css/styles.imageuploader.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/updata.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/styles.imageuploader.css">
     <title>上传资料</title>
 </head>
 
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="" class="logo">
+        <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
         <ul class="list">
-            <li><a href="./updata.html">上传</a></li>
-            <li><a href="./modify.html">修订</a></li>
-            <li><a href="./history.html">查询</a></li>
+            <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
+            <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
+            <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-            <span>张三</span>
-            <a href="../templates/login.html">退出</a>
+            <span></span>
+            <a href="/api/ocr/validation_logout/">退出</a>
         </div>
     </header>
     <div id="upload">
@@ -36,14 +36,14 @@
             </form>
         </div>
     </div>
-    <script src="../static/js/jquery-1.11.0.min.js"></script>
-    <script src="../static/js/jquery.imageuploader.js"></script>
+    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/custom_visualizations/js/jquery.imageuploader.js"></script>
     <script type="text/javascript">
         (function () {
             var options = {};
             $('.js-uploader__box').uploader({
                 'selectButtonCopy': '请选择或拖拽文件',
-                'instructionsCopy': '你可以选择或拖拽多个文件',
+                'instructionsCopy': '请一次上传一个图片或文件',
                 'submitButtonCopy': '上传选择的文件',
                 'furtherInstructionsCopy': '你可以选择或拖拽更多的文件',
                 'secondarySelectButtonCopy': '选择更多的文件'

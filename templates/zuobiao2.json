@@ -1,0 +1,236 @@
+{
+    "ret_ts": 1546828243,
+    "case_id": "hydtest14",
+    "data": {
+        "medical_record_home": [],
+        "other": [],
+        "cost_listing": [],
+        "invoice": [],
+        "medical_report": [],
+        "laboratory": [{
+            "diagnose": {
+                "position": {
+                    "width": "3026",
+                    "top": "252",
+                    "height": "48",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "\u7cd6\u5c3f\u75c5 \u53cd\u590d\u53d1\u4f5c\u4f4e\u8840\u7cd6 \u8840\u7cd6\u4e0d\u7a33\u5b9a \u7cd6\u5c3f "
+            },
+            "report_time": {
+                "position": {
+                    "width": "3026",
+                    "top": "1560",
+                    "height": "41",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "2015-09\u201408"
+            },
+            "image_name": "shumei_1546571883_2425_docx.jpg",
+            "sex": {
+                "position": {
+                    "width": "3026",
+                    "top": "139",
+                    "height": "48",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "\u7537"
+            },
+            "name": {
+                "position": {
+                    "width": "3026",
+                    "top": "139",
+                    "height": "48",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "\u8881\u667a"
+            },
+            "uuid": "hydtest14",
+            "check_time": {
+                "position": {
+                    "width": "3026",
+                    "top": "1560",
+                    "height": "41",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "2015-09-08"
+            },
+            "hospital": {
+                "position": {
+                    "width": "0",
+                    "top": "0",
+                    "height": "0",
+                    "left": "0"
+                },
+                "recognise": "",
+                "value": ""
+            },
+            "image_url": "./new.jpg",
+            "index_arr": [{
+                "index_value": "1.82",
+                "index_name": "\u4f4e\u5bc6\u5ea6\u8102\u86cb\u767d\u80c6\u56fa\u9187",
+                "height": "39",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "2.7-3.64",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23228,
+                "top": "713",
+                "left": "0"
+            }, {
+                "index_value": "1",
+                "index_name": "\u4f4e\u5bc6\u5ea6\u8102\u86cb\u767d\u80c6\u56fa\u9187",
+                "height": "348",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23232,
+                "top": "770",
+                "left": "0"
+            }, {
+                "index_value": "4.34",
+                "index_name": "\u4f4e\u5bc6\u5ea6\u8102\u86cb\u767d\u80c6\u56fa\u9187",
+                "height": "348",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23233,
+                "top": "770",
+                "left": "0"
+            }, {
+                "index_value": "-",
+                "index_name": "\u8461\u8404\u7cd6",
+                "height": "348",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "",
+                "width": "3026",
+                "index_unit": "%",
+                "index_id": 23234,
+                "top": "770",
+                "left": "0"
+            }, {
+                "index_value": "10.29",
+                "index_name": "\u808c\u9150",
+                "height": "348",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "",
+                "width": "3026",
+                "index_unit": "",
+                "index_id": 23235,
+                "top": "770",
+                "left": "0"
+            }, {
+                "index_value": "9.49",
+                "index_name": "\u8840\u6e05\u5c3f\u7d20",
+                "height": "39",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "2.9-8.2",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23230,
+                "top": "395",
+                "left": "0"
+            }, {
+                "index_value": "95.18",
+                "index_name": "\u808c\u9150",
+                "height": "39",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "44-115",
+                "width": "3026",
+                "index_unit": "umol/L",
+                "index_id": 23237,
+                "top": "450",
+                "left": "0"
+            }, {
+                "index_value": "11.81",
+                "index_name": "\u7518\u6cb9\u4e09\u916f",
+                "height": "39",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "0.38-1.70",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23229,
+                "top": "503",
+                "left": "0"
+            }, {
+                "index_value": "6.93",
+                "index_name": "\u8840\u6e05\u603b\u80c6\u56fa\u9187",
+                "height": "39",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "2.40-5.70",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23236,
+                "top": "558",
+                "left": "0"
+            }, {
+                "index_value": "0.771",
+                "index_name": "\u9ad8\u5bc6\u5ea6\u8102\u86cb\u767d\u80c6\u56fa\u9187",
+                "height": "38",
+                "recognise": null,
+                "index_flag": "",
+                "index_normal_value": "1.04-1.42",
+                "width": "3026",
+                "index_unit": "mmol/L",
+                "index_id": 23231,
+                "top": "612",
+                "left": "0"
+            }],
+            "department": {
+                "position": {
+                    "width": "3026",
+                    "top": "195",
+                    "height": "49",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "\u5185\u5206\u6ccc\u95e8\u8bca"
+            },
+            "age": {
+                "position": {
+                    "width": "3026",
+                    "top": "139",
+                    "height": "48",
+                    "left": "0"
+                },
+                "recognise": null,
+                "value": "51"
+            }
+        }],
+        "medical_data": [{
+            "\u8840\u5e38\u89c4\u68c0\u67e5": [],
+            "\u4e00\u822c\u68c0\u67e5": [],
+            "\u4e94\u5b98\u79d1\u68c0\u67e5": [],
+            "\u5916\u79d1\u68c0\u67e5": [],
+            "\u8840\u6d41\u53d8\u68c0\u67e5": [],
+            "\u5987\u79d1\u68c0\u67e5": [],
+            "\u5185\u79d1\u68c0\u67e5": [],
+            "\u57fa\u672c\u4fe1\u606f": [],
+            "\u7ed3\u8bba\u5efa\u8bae": [],
+            "\u80bf\u7624\u68c0\u67e5": [],
+            "\u751f\u5316\u68c0\u67e5": [],
+            "\u5fc3\u7535\u56fe\u68c0\u67e5": [],
+            "\u5c3f\u5e38\u89c4\u68c0\u67e5": [],
+            "\u5f71\u50cf\u68c0\u67e5": []
+        }],
+        "pres": []
+    },
+    "ret_cd": 200,
+    "suc_id": 1
+}

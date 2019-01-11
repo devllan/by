@@ -7,7 +7,7 @@ pCg.prototype.Load=function (arrAy) {
     if(typeof arrAy[_this.num]==='undefined'){
         return
     }
-    var path="../../../static/custom_visualization/js/";
+    var path="/static/custom_visualizations/js/";
     new_element=document.createElement("script");
     new_element.setAttribute("type","text/javascript");
     new_element.setAttribute("src",path+arrAy[_this.num]+'?t='+new Date().getTime());

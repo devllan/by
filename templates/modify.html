@@ -1,27 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../static/images/icon.JPG">
+    <link rel="icon" href="/static/custom_visualizations/images/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/modify.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/modify.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/invoice.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/layui/layui.js>
+    <link rel=" stylesheet" href="/static/custom_visualizations/css/font-awesome.min.css">
     <title>修订数据</title>
+    <style type="text/css">
+        /************ Table ************/
+        .inTable {
+            width: 100%;
+            /* border-collapse: collapse; */
+            border: 1px solid #ccc;
+        }
+
+        .inTable thead td {
+            font-size: 12px;
+            color: #333333;
+            text-align: center;
+            /*background: url(table_top.jpg) repeat-x top center;*/
+            border: 1px solid #ccc;
+            font-weight: bold;
+        }
+
+        .inTable tbody tr {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .inTable tbody tr.alt-row {
+            background: #f2f7fc;
+        }
+
+        .inTable td {
+            line-height: 20px;
+            text-align: left;
+            padding: 4px 10px 3px 10px;
+            height: 18px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="" class="logo">
+        <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
         <ul class="list">
-            <li><a href="./updata.html">上传</a></li>
-            <li><a href="./modify.html">修订</a></li>
-            <li><a href="./history.html">查询</a></li>
+            <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
+            <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
+            <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-            <span>张三</span>
-            <a href="../templates/login.html">退出</a>
+            <span></span>
+            <a href="/api/ocr/validation_logout/">退出</a>
         </div>
     </header>
-    <div></div>
+    <div id="app">
+        <!--化验单-->
+        <div class="laboratory" v-if="documentTypeList.laboratory">
+            <!-- 列表框 -->
+            <div class="listdiv">
+                <p style="color:red;font-size: 20px;">识别中颜色提示：1234</p>
+                <p style="color:green;font-size: 20px;">识别完成颜色提示：1234</p>
+                <ul>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                    <li>1234567890</li>
+                </ul>
+            </div>
+            <!-- 图像、控制列表 -->
+            <div class="imgAmdListBox">
+                <div class="img_move_box" onmousedown="mos(event)">
+                    <div class="imgButBox">
+                        <img id="ImaGes" :src="RenderingData['image_url']" width="100%" alt="未找到图片">
+                        <div class="omtImg"></div>
+                    </div>
+                </div>
+                <!-- 按钮 List-->
+                <div class="direction">
+                    <div>
+                        <!-- <div>-->
+                        <!--<button class="layui-btn" onclick="modify_data()">确认修改</button>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                        <!--<button class="layui-btn" onclick="updata_fyxx()">添加费用信息</button>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                        <!--<button class="layui-btn" onclick="open_url.Cost_url()">查看本组报告</button>-->
+                        <!--</div> -->
+                    </div>
+                    <div style="font-size: 30px;">
+                        <div>
+                            <a class="fa fa-chevron-circle-left" v-on:click="direction(true)"></a>
+                        </div>
+                        <div>
+                            <a class="	fa fa-chevron-circle-right" v-on:click="direction(false)"></a>
+                        </div>
+                        <div>
+                            <a class="fa fa-search-plus" v-on:click="enlarge(true)"></a>
+                        </div>
+                        <div>
+                            <a class="	fa fa-search-minus" v-on:click="enlarge(false)"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--信息展示-->
+            <div class="information">
+                <form>
+                    <!--基本信息-->
+                    <table class="inTable">
+                        <thead>
+                            <tr>
+                                <td colspan="6">基本信息</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>医院:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>姓名:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>年龄:</div>
+                                        <div style="color:#000">
+                                            <!-- 待办：年龄性别，报告日期等未修改 -->
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>性别:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>报告日期:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>检验日期:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>科室:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>诊断:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--处方信息-->
+                    <table class="inTable">
+                        <thead>
+                            <tr>
+                                <td colspan="6">处方信息</td>
+                            </tr>
+                            <tr>
+                                <th>指标名称</th>
+                                <th>指标正常值范围</th>
+                                <th>单位</th>
+                                <th>指标值</th>
+                                <th>标识</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr v-for="lab in RenderingData.index_arr">
+                                <td>
+                                    <div style="color:#000">
+                                        <input type="text" placeholder="(空)" class="layui-input show" v-model="lab.index_name">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="color:#000">
+                                        <input type="text" placeholder="(空)" class="layui-input" v-model="lab.index_normal_value">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="color:#000">
+                                        <input type="text" placeholder="(空)" class="layui-input" v-model="lab.index_unit">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="color:#000">
+                                        <input type="text" placeholder="(空)" class="layui-input Value" v-model="lab.index_value">
+                                    </div>
+                                </td>
+                                <td style="text-align: center">
+                                    <i v-if="lab.index_flag==1" class="fa fa-arrow-up"></i>
+                                    <i v-if="lab.index_flag==2" class="fa fa-arrow-down"></i>
+                                    <i v-if="lab.index_flag==0" style="color:#5daf34;" class="fa fa-circle"></i>
+                                    <i v-if="lab.index_flag==3" style="color: #999" class="fa fa-circle"></i>
+                                </td>
+                                <td>
+                                    <button>删除</button>
+                                </td>
+                            </tr>
+                            <tr class="addlist">
+                                <td colspan="6">
+                                    <button id="addbtn">补充一条新数据</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <div id="null"></div>
+                    <input type="submit" value='提交入库' id="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
+    <script>
+        var pCg = new pCg();
+        pCg.Load(['min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js', 'modify.js']);
+    </script>
+    <!-- <script src="../static/js/min.js"></script>
+    <script src="../static/js/vue-resource.js"></script>
+    <script src="../static/js/invoice.js"></script>
+    <script src="../static/js/showdiv.js"></script> -->
+    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
+    <!-- <script src="../static/js/modify.js"></script> -->
 </body>
+
 </html>
