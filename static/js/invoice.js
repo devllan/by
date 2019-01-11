@@ -1,4 +1,4 @@
-// var url = './zuobiao2.json';
+var url = './zuobiao2.json';
 var srceach_details=JSON.parse(localStorage.srceach_details)  
 var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
 var dir = 0,

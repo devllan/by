@@ -47,6 +47,11 @@
             border: 1px solid #ccc;
         }
     </style>
+    <!-- <script>
+        setInterval(function () {
+                localStorage.length===0?window.location.href='/api/ocr/validation_logout/':localStorage.length;
+            },100)
+    </script> -->
 </head>
 
 <body>
@@ -58,8 +63,8 @@
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-            <span></span>
-            <a href="/api/ocr/validation_logout/">退出</a>
+            <span id="User_Name">{{request.user}}</span>
+            <a href="/api/ocr/val_tion_login/">退出</a>
         </div>
     </header>
     <div id="search">
@@ -325,6 +330,10 @@
             </div>
         </div>
     </div>
+    <!-- <script>
+        var los = JSON.parse(localStorage.successResult);
+        document.getElementById('User_Name').innerText = localStorage.user_code;
+    </script> -->
     <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
     <script>
         var pCg = new pCg();

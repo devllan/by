@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
     <link rel="stylesheet" href="/static/custom_visualizations/css/index.css">
     <title>北大医院肾内科化验单智能识别系统</title>
+    <!-- <script>
+        setInterval(function () {
+            localStorage.length === 0 ? window.location.href = '/api/ocr/validation_logout/' : localStorage.length;
+        }, 100)
+    </script> -->
 </head>
 
 <body>
@@ -20,8 +25,8 @@
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-            <span></span>
-            <a href="/api/ocr/validation_logout/">退出</a>
+                <span id="User_Name">{{request.user}}</span>
+            <a href="/api/ocr/val_tion_login/">退出</a>
         </div>
     </header>
     <div id="content">
@@ -32,6 +37,10 @@
             欢迎使用北大医院肾内科化验单智能识别系统
         </p>
     </div>
+    <!-- <script>
+        var los = JSON.parse(localStorage.successResult);
+        document.getElementById('User_Name').innerText = localStorage.user_code;
+    </script> -->
 </body>
 
 </html>

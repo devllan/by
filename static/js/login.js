@@ -50,9 +50,9 @@ $('.submit').click(function () {
     var pwd = $('input[name="pwd"]').val();
     // var code = $('input[name="code"]').val();
     if (login == '') {
-        ErroAlert('请输入您的账号');
+        alert('请输入您的账号');
     } else if (pwd == '') {
-        ErroAlert('请输入密码');
+        alert('请输入密码');
     } else {
         //认证中..
         var obj = new Object();
@@ -69,9 +69,14 @@ $('.submit').click(function () {
                 if (data.ret_cd === 403) {
                     alert('无权登录');
                 } else if (data.ret_cd === 200) {
+                    // for (s in data) {
+                    //     localStorage[s] = data[s];
+                    // }
+                    // localStorage['time'] = date;
+                    // localStorage.successResult = JSON.stringify(data.successResult[0]);
                     window.location = '/api/ocr/val_tion_index/'
                 } else if (data.ret_cd === 104) {
-                    window.location = '/api/ocr/validation_logout/'
+                    window.location = '/api/ocr/validation_login/'
                     alert('认证失败');
                 } else {
                     alert('登录失败');
