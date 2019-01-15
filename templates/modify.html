@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
     <link rel="stylesheet" href="/static/custom_visualizations/css/modify.css">
     <link rel="stylesheet" href="/static/custom_visualizations/css/invoice.css">
-    <link rel="stylesheet" href="/static/custom_visualizations/layui/layui.js>
-    <link rel=" stylesheet" href="/static/custom_visualizations/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/font-awesome.min.css">
     <title>修订数据</title>
     <style type="text/css">
         /************ Table ************/
@@ -62,7 +62,6 @@
 
         .state0 {
             color: red;
-            cursor: pointer;
             border-bottom: 1px solid #ccc;
         }
 
@@ -227,6 +226,32 @@
                                         <div>诊断:</div>
                                         <div style="color:#000">
                                             <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>样本编号:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sample_number.value">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>总指标数:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_total">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>已识别的指标数:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_defined">
                                         </div>
                                     </div>
                                 </td>

@@ -41,9 +41,9 @@ $.ajax({
                     todolist.setAttribute("class", "state0");
                     todolist.innerText = img_name;
                     $(".state0ul").append(todolist);
-                    ghost.setAttribute("class", "ghost");
-                    ghost.innerText = uuids;
-                    $(".state0ul").append(ghost);
+                    // ghost.setAttribute("class", "ghost");
+                    // ghost.innerText = uuids;
+                    // $(".state0ul").append(ghost);
                     // console.log(ghost.innerHTML);
                 }
             }
