@@ -1,6 +1,22 @@
+// var uudis = document.getElementsByClassName("ghost");
+// console.log(uudis);
+// var state0 = document.getElementsByClassName('state0');
+// console.log(state0);
+var state1 = document.querySelectorAll('.state1');
+console.log(state1);
+for (i = 0; i < state1.length; i++) {
+    console.log(state1[i].innerHTML)
+    state1[i].onclick = function () {
+        console.log(1111);
+        
+    };
+}
+
+
 var url = './zuobiao2.json';
-var srceach_details=JSON.parse(localStorage.srceach_details)  
-var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
+// var srceach_details=JSON.parse(localStorage.srceach_details)  
+// var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
+// var url = '/api/ocr/validation/async_result/';
 var dir = 0,
     der = 1;
 var app = new Vue({
@@ -30,7 +46,45 @@ var app = new Vue({
     },
     created: function () {
         console.log('created');
-        var _this = this;
+        // var _this = this;
+        // // var srceach_details=JSON.parse(localStorage.srceach_details)  
+        // // var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
+        // this.$http.get(url).then(function (data) {
+        //     var DataMsg = data.data.data;
+        //     for (i in DataMsg) {
+        //         if (DataMsg[i].length === 0) {
+        //             continue
+        //         }
+        //         _this.documentTypeList[i] = true;
+        //         _this.RenderingData = DataMsg[i][0];
+        //         switch (i) {
+        //             case 'invoice':
+        //                 _this.flagCutting(_this.RenderingData.flag);
+        //                 break;
+        //             case 'cost_listing':
+        //                 for (var i = 0; i < _this.RenderingData.cos_project_list.length; i++) {
+        //                     _this.Flag.push(_this.RenderingData.cos_project_list[i].project_check_str.split('')[6]);
+        //                 }
+        //                 break;
+        //         }
+        //         break;
+        //     }
+        //     if (data.data.ret_cd !== 200) {
+        //         alert('请求出错，代码：' + data.data.ret_cd)
+        //         return;
+        //     }
+        //     _this.inData = data.data.data;
+        // }, function (err) {
+        //     console.log(err);
+        // })
+    },
+    mounted: function () {
+        console.log('mounted');
+    },
+    methods: {
+        init: function () {},
+        qingqiu:function(){
+            var _this = this;
         // var srceach_details=JSON.parse(localStorage.srceach_details)  
         // var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
         this.$http.get(url).then(function (data) {
@@ -61,12 +115,7 @@ var app = new Vue({
         }, function (err) {
             console.log(err);
         })
-    },
-    mounted: function () {
-        console.log('mounted');
-    },
-    methods: {
-        init: function () {},
+        },
         flagCutting: function (flag) {
             this.Flag = flag.split('');
             return true
@@ -177,4 +226,3 @@ function mos(event) {
     };
     console.log(movDom.style.left)
 }
-

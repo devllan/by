@@ -19,7 +19,6 @@
             /* border-collapse: collapse; */
             border: 1px solid #ccc;
         }
-
         .inTable thead td {
             font-size: 12px;
             color: #333333;
@@ -28,16 +27,13 @@
             border: 1px solid #ccc;
             font-weight: bold;
         }
-
         .inTable tbody tr {
             font-size: 12px;
             color: #666666;
         }
-
         .inTable tbody tr.alt-row {
             background: #f2f7fc;
         }
-
         .inTable td {
             line-height: 20px;
             text-align: left;
@@ -45,9 +41,51 @@
             height: 18px;
             border: 1px solid #ccc;
         }
+        .delete {
+            display: inline-block;
+            width: 35px;
+            background-color: #F74631;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .delete:hover {
+            color: white;
+        }
+
+        .state1 {
+            color: green;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .state0 {
+            color: red;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .listdiv ul li:first-child {
+            font-size: 20px;
+            /* background-color:rgb(238, 238, 238); */
+            color: #BA3E45;
+            border-bottom: 1px solid black;
+            padding-bottom: 3px;
+            margin-bottom: 5px;
+        }
+
+        .ghost {
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
     </style>
 </head>
-
 <body>
     <header>
         <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
@@ -61,71 +99,19 @@
             <a href="/api/ocr/val_tion_login/">退出</a>
         </div>
     </header>
+    <div class="listdiv">
+            <ul class="state1ul">
+                <li>识别完成</li>
+            </ul>
+            <ul class="state0ul">
+                <li>识别中</li>
+            </ul>
+        </div>
     <div id="app">
         <!--化验单-->
         <div class="laboratory" v-if="documentTypeList.laboratory">
             <!-- 列表框 -->
-            <div class="listdiv">
-                <p style="color:red;font-size: 20px;">识别中颜色提示：1234</p>
-                <p style="color:green;font-size: 20px;">识别完成颜色提示：1234</p>
-                <ul>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                </ul>
-            </div>
+
             <!-- 图像、控制列表 -->
             <div class="imgAmdListBox">
                 <div class="img_move_box" onmousedown="mos(event)">
@@ -299,9 +285,7 @@
                                     <button id="addbtn">补充一条新数据</button>
                                 </td>
                             </tr>
-
                         </tbody>
-
                     </table>
                     <div id="null"></div>
                     <input type="submit" value='提交入库' id="submit">
@@ -312,7 +296,7 @@
     <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
     <script>
         var pCg = new pCg();
-        pCg.Load(['min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js', 'modify.js']);
+        pCg.Load([ 'modify.js','min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js']);
     </script>
     <!-- <script src="../static/js/min.js"></script>
     <script src="../static/js/vue-resource.js"></script>
@@ -321,5 +305,4 @@
     <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
     <!-- <script src="../static/js/modify.js"></script> -->
 </body>
-
 </html>

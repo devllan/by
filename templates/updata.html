@@ -8,8 +8,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
     <link rel="stylesheet" href="/static/custom_visualizations/css/updata.css">
-    <link rel="stylesheet" href="/static/custom_visualizations/css/styles.imageuploader.css">
+    <!-- <link rel="stylesheet" href="/static/custom_visualizations/css/styles.imageuploader.css"> -->
+    <link rel="stylesheet" href="/static/custom_visualizations/css/layui.css">
     <title>上传资料</title>
+    <style>
+        .layui-upload{
+                margin-top: 50px;
+            }
+            #testList{
+                margin-left: 5px;
+            }
+            #testListActions{
+                margin-left: 5px;
+                /* margin-top: 30px; */
+            }
+        </style>
 </head>
 
 <body>
@@ -21,35 +34,43 @@
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-                <span id="User_Name">{{request.user}}</span>
+            <span id="User_Name">{{request.user}}</span>
             <a href="/api/ocr/val_tion_login/">退出</a>
         </div>
     </header>
-    <div id="upload">
-        <div class="uploader__box js-uploader__box l-center-box">
-            <form action="后台提交的地址" method="POST">
-                <div class="uploader__contents">
-                    <label class="button button--secondary" for="fileinput">选择文件</label>
-                    <input id="fileinput" class="uploader__file-input" type="file" multiple value="Select Files">
-                </div>
-                <input class="button button--big-bottom" type="submit" value="Upload Selected Files">
-            </form>
+    <div class="layui-upload">
+        <div class="layui-form-item">
+            <button type="button" class="layui-btn layui-btn-normal" id="testList">选择文件</button>
+            <!-- <div class="layui-inline">
+                    <label class="layui-form-label">业务号码</label>
+                    <div class="layui-input-inline" id="yrwu">
+                        <input type="text" name="email" lay-verify="email" id="BT_inp" autocomplete="off" class="layui-input"
+                            onchange="data_list(this)" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                    </div>
+                </div> -->
         </div>
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>文件名</th>
+                        <th>大小</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+        <button type="button" class="layui-btn" id="testListActions" onclick="fun1()">开始上传</button>
+        <button type="button" class="layui-btn" id="testListAction" style="display: none">开始上传</button>
     </div>
     <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
-    <script src="/static/custom_visualizations/js/jquery.imageuploader.js"></script>
-    <script type="text/javascript">
-        (function () {
-            var options = {};
-            $('.js-uploader__box').uploader({
-                'selectButtonCopy': '请选择或拖拽文件',
-                'instructionsCopy': '请一次上传一个图片或文件',
-                'submitButtonCopy': '上传选择的文件',
-                'furtherInstructionsCopy': '你可以选择或拖拽更多的文件',
-                'secondarySelectButtonCopy': '选择更多的文件'
-            });
-        }());
-    </script>
+    <script src="/static/custom_visualizations/js/getImgURL.js"></script>
+    <script src="/static/custom_visualizations/layui/layui.js"></script>
+    <script src="/static/custom_visualizations/js/purpose.js"></script>
+    <script src="/static/custom_visualizations/js/updata.js"></script>
+</body>
 </body>
 
 </html>

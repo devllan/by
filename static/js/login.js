@@ -76,7 +76,7 @@ $('.submit').click(function () {
                     // localStorage.successResult = JSON.stringify(data.successResult[0]);
                     window.location = '/api/ocr/val_tion_index/'
                 } else if (data.ret_cd === 104) {
-                    window.location = '/api/ocr/validation_login/'
+                    window.location = '/api/ocr/val_tion_login/'
                     alert('认证失败');
                 } else {
                     alert('登录失败');

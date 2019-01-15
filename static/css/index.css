@@ -51,13 +51,13 @@ header{
 }
 #user{
     display: inline-block;
-    width: 180px;
+    width: 230px;
     height: 100px;
     position: absolute;
     top: 0px;
     right: 100px;
     border-radius: 10px;
-    background-color:rgba(242, 242, 242, 0.4);
+    /* background-color:rgba(242, 242, 242, 0.4); */
     
 }
 #user span{
@@ -73,6 +73,7 @@ header{
     height: 30px;
     position: absolute;
     top: 35px;
+    right: 5px;
     background-color: rgba(186,62,69);
     border-radius: 10px;
     line-height: 30px;
