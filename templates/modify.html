@@ -19,6 +19,7 @@
             /* border-collapse: collapse; */
             border: 1px solid #ccc;
         }
+
         .inTable thead td {
             font-size: 12px;
             color: #333333;
@@ -27,13 +28,16 @@
             border: 1px solid #ccc;
             font-weight: bold;
         }
+
         .inTable tbody tr {
             font-size: 12px;
             color: #666666;
         }
+
         .inTable tbody tr.alt-row {
             background: #f2f7fc;
         }
+
         .inTable td {
             line-height: 20px;
             text-align: left;
@@ -41,6 +45,7 @@
             height: 18px;
             border: 1px solid #ccc;
         }
+
         .delete {
             display: inline-block;
             width: 35px;
@@ -62,6 +67,7 @@
 
         .state0 {
             color: red;
+            /* cursor: pointer; */
             border-bottom: 1px solid #ccc;
         }
 
@@ -69,7 +75,7 @@
             background-color: white;
         }
 
-        .listdiv ul li:first-child {
+        #listdiv ul li:first-child {
             font-size: 20px;
             /* background-color:rgb(238, 238, 238); */
             color: #BA3E45;
@@ -83,29 +89,64 @@
             height: 0;
             overflow: hidden;
         }
+
+        .bitian {
+            color: red;
+            font-size: 11px;
+        }
+
+        #addbtn {
+            height: 40px;
+            background-color: #009688;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            width: 150px;
+            position: fixed;
+            bottom: 5px;
+            right: 180px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+        #submit {
+            cursor: pointer;
+        }
+
+        #zhezhao {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: (255, 255, 255, 0.3);
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
+        <img src="../static/images/logo.png" alt="" class="logo">
         <ul class="list">
-            <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
-            <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
-            <li><a href="/api/ocr/val_tion_history/">查询</a></li>
+            <li><a href="./updata.html">上传</a></li>
+            <li><a href="./modify.html">修订</a></li>
+            <li><a href="./history.html">查询</a></li>
         </ul>
         <div id="user">
-                <span id="User_Name">{{request.user}}</span>
-            <a href="/api/ocr/val_tion_login/">退出</a>
+            <span id="User_Name">yonghuming</span>
+            <a href="../templates/login.html">退出</a>
         </div>
     </header>
-    <div class="listdiv">
-            <ul class="state1ul">
-                <li>识别完成</li>
-            </ul>
-            <ul class="state0ul">
-                <li>识别中</li>
-            </ul>
-        </div>
+    <!-- <iframe src="./iframe.html" frameborder="0">
+        
+            </iframe> -->
+    <div id="listdiv">
+        <ul id="state1ul">
+            <li>识别完成</li>
+        </ul>
+        <ul id="state0ul">
+            <li>识别中</li>
+        </ul>
+    </div>
     <div id="app">
         <!--化验单-->
         <div class="laboratory" v-if="documentTypeList.laboratory">
@@ -115,7 +156,7 @@
             <div class="imgAmdListBox">
                 <div class="img_move_box" onmousedown="mos(event)">
                     <div class="imgButBox">
-                        <img id="ImaGes" :src="RenderingData['image_url']" width="100%" alt="未找到图片">
+                        <img id="ImaGes" :src="RenderingData['image_url']" width="100%" alt="请点击左侧列表以查看">
                         <div class="omtImg"></div>
                     </div>
                 </div>
@@ -162,17 +203,19 @@
                             <tr>
                                 <td>
                                     <div>
-                                        <div>医院:</div>
+                                        <div>医院<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value"
+                                                id="hospital">
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <div>姓名:</div>
+                                        <div>姓名<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value"
+                                                id="name">
                                         </div>
                                     </div>
                                 </td>
@@ -181,7 +224,8 @@
                                         <div>年龄:</div>
                                         <div style="color:#000">
                                             <!-- 待办：年龄性别，报告日期等未修改 -->
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value"
+                                                id="age">
                                         </div>
                                     </div>
                                 </td>
@@ -191,7 +235,8 @@
                                     <div>
                                         <div>性别:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value"
+                                                id="sex">
                                         </div>
                                     </div>
                                 </td>
@@ -199,7 +244,8 @@
                                     <div>
                                         <div>报告日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value"
+                                                id="report_time">
                                         </div>
                                     </div>
                                 </td>
@@ -207,7 +253,8 @@
                                     <div>
                                         <div>检验日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value"
+                                                id="check_time">
                                         </div>
                                     </div>
                                 </td>
@@ -217,7 +264,8 @@
                                     <div>
                                         <div>科室:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value"
+                                                id="department">
                                         </div>
                                     </div>
                                 </td>
@@ -225,7 +273,8 @@
                                     <div>
                                         <div>诊断:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value"
+                                                id="diagnose">
                                         </div>
                                     </div>
                                 </td>
@@ -233,7 +282,8 @@
                                     <div>
                                         <div>样本编号:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sample_number.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sample_number.value"
+                                                id="sample_number">
                                         </div>
                                     </div>
                                 </td>
@@ -243,7 +293,8 @@
                                     <div>
                                         <div>总指标数:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_total">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_total"
+                                                id="index_number_total">
                                         </div>
                                     </div>
                                 </td>
@@ -251,7 +302,8 @@
                                     <div>
                                         <div>已识别的指标数:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_defined">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_defined"
+                                                id="index_number_defined">
                                         </div>
                                     </div>
                                 </td>
@@ -277,6 +329,7 @@
                             <tr v-for="lab in RenderingData.index_arr">
                                 <td>
                                     <div style="color:#000">
+                                        <!-- {{lab.index_name}} -->
                                         <input type="text" placeholder="(空)" class="layui-input show" v-model="lab.index_name">
                                     </div>
                                 </td>
@@ -302,32 +355,36 @@
                                     <i v-if="lab.index_flag==3" style="color: #999" class="fa fa-circle"></i>
                                 </td>
                                 <td>
-                                    <button>删除</button>
+                                    <!-- <button class="delete">删除</button> -->
+                                    <a href="javascript:;" class="delete" @click="del(lab)">删除</a>
                                 </td>
                             </tr>
-                            <tr class="addlist">
-                                <td colspan="6">
-                                    <button id="addbtn">补充一条新数据</button>
-                                </td>
-                            </tr>
+                            <!-- <tr class="addlist">
+                                        <td colspan="6">
+                                            <a href="javascript:;" id="addbtn" v-on:click="addlist">补充一条新数据</a>
+                                        </td>
+                                    </tr> -->
                         </tbody>
                     </table>
                     <div id="null"></div>
-                    <input type="submit" value='提交入库' id="submit">
+                    <input type="javascript:;" id="addbtn" @click="addlist" value="补充一条新数据">
+                    <input type="javascript:;" value='      提交入库' id="submit" @click="submit">
                 </form>
             </div>
         </div>
     </div>
+    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
     <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
     <script>
         var pCg = new pCg();
-        pCg.Load([ 'modify.js','min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js']);
+        pCg.Load(['modify.js', 'min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js']);
     </script>
     <!-- <script src="../static/js/min.js"></script>
     <script src="../static/js/vue-resource.js"></script>
     <script src="../static/js/invoice.js"></script>
     <script src="../static/js/showdiv.js"></script> -->
-    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
+
     <!-- <script src="../static/js/modify.js"></script> -->
 </body>
+
 </html>

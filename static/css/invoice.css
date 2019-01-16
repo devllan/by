@@ -139,17 +139,15 @@ body,html{height:99.9%;}
     border: none;
     border-radius: 10px;
     width: 150px;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;;
 }
-.listdiv{
+#listdiv{
     position: absolute;
     width: 20%;
     height: 100%;
     overflow: auto;
-}
-#submit{
-    position: fixed;
-    bottom: 5px;
-    right: 15px;;
 }
 #null{
     height: 80px;
