@@ -12,8 +12,8 @@ var user = document.getElementById("User_Name").innerHTML;
 var User = user;
 var uuids;
 var nx;
-var Datas;
 // ste
+console.log(state1)
 function idot() {
     for (i = 0; i < state1.length; i++) {
         state1[i].onclick = function () {
@@ -22,20 +22,12 @@ function idot() {
             nx = this.nextElementSibling.innerHTML;
             console.log(uuids);
             console.log(nx);
-            Datas = {
+            var Datas = {
                 'uuids': nx,
                 'image_name': uuids
             }
-
             console.log(Datas)
             app.qingqiu(Datas);
-            var cloud22 = document.getElementById("cloud22");
-            var submit = document.getElementById("submit");
-            var addbtn = document.getElementById("addbtn");
-            submit.style.display = "none";
-            addbtn.style.display = "none";
-            console.log(cloud22);
-            cloud22.style.display = "block";
             // ShowDiv(nx, uuids);
         };
     };
@@ -69,10 +61,11 @@ var app = new Vue({
                 ,
             other: false //未知
         },
-        Flag: [],
+        Flag: []
     },
     created: function () {
         console.log('created');
+
     },
     mounted: function () {
         console.log('mounted');
@@ -81,10 +74,9 @@ var app = new Vue({
         init: function () {},
         //发送请求
         qingqiu: function (Datas) {
-            var cloud = document.getElementById('cloud');
-            cloud.style.display = 'none';
+            // var cloud = document.getElementById('cloud');
+            // cloud.style.display = 'none';
             var _this = this;
-            var Datas = Datas;
             // var srceach_details=JSON.parse(localStorage.srceach_details)  
             // var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
             this.$http.post(url, Datas).then(function (data) {
@@ -112,8 +104,6 @@ var app = new Vue({
                     alert('请求出错，代码：' + data.data.ret_cd)
                     return;
                 }
-                console.log(Datas);
-                console.log(_this.double)
                 _this.inData = data.data.successResult;
                 //随动框
                 setTimeout(function () {
@@ -180,20 +170,9 @@ var app = new Vue({
                     // }
                 }, 500)
                 // console.log(Top_arr)
-
             }, function (err) {
                 console.log(err);
             });
-        },
-        offcloud: function () {
-            console.log("offcloud");
-            var cloud22 = document.getElementById("cloud22");
-            var submit = document.getElementById("submit");
-            var addbtn = document.getElementById("addbtn");
-            submit.style.display = "block";
-            addbtn.style.display = "block";
-            console.log(cloud22);
-            cloud22.style.display = "none";
         },
         //添加一条数据
         addlist: function () {
@@ -220,128 +199,118 @@ var app = new Vue({
             var image_name = uuids;
             var nxx = nx;
             console.log(nxx);
-            console.log(index)
-            // var user = document.getElementById("User_Name").innerHTML;
+            var user = document.getElementById("User_Name").innerHTML;
             var datas = {
                 'index_id': index_id,
                 'uuids': nxx,
                 'image_name': image_name,
             }
             var datass = JSON.stringify(datas);
-            var id = index.index_id;
-            console.log(id);
-            if (id == "") {
-
-                app.RenderingData.index_arr.pop();
-            } else {
-                var r = confirm("确定要删除一条原有数据吗？");
-                if (r == true) {
-                    var url = "/api/ocr/validation/del_index_arr/";
-                    // var url = "./del.json";
-                    this.$http.post(url, datass).then(function (data) {
-                        var _this = this;
-                        console.log(data);
-                        var DataMsg = data.data.successResult;
-                        for (i in DataMsg) {
-                            console.log(DataMsg[i])
-                            // _this.documentTypeList[i] = true;
-                            console.log(_this.documentTypeList.laboratory = true)
-                            console.log(_this.documentTypeList)
-                            _this.RenderingData = DataMsg[0];
-                            console.log(_this.RenderingData);
-                            switch (i) {
-                                case 'invoice':
-                                    _this.flagCutting(_this.RenderingData.flag);
-                                    break;
-                                case 'cost_listing':
-                                    for (var i = 0; i < _this.RenderingData.cos_project_list.length; i++) {
-                                        _this.Flag.push(_this.RenderingData.cos_project_list[i].project_check_str.split('')[6]);
-                                    }
-                                    break;
-                            }
-                            break;
-                        }
-                        if (data.data.ret_cd !== 200) {
-                            alert('请求出错，代码：' + data.data.ret_cd)
-                            return;
-                        }
-                        _this.inData = data.data.successResult;
-                        //随动框
-                        setTimeout(function () {
-                            let ShowInput = document.getElementsByClassName("show");
-                            var coordinate = data.data;
-                            var coordinate_data = coordinate.successResult;
-                            var Top_arr = [];
-                            var Width_arr = [];
-                            var Left_arr = [];
-                            var Height_arr = [];
-                            //取源图像的大小值
-                            var
-                                YWidth = document.getElementById('ImaGes').naturalWidth,
-                                YHeight = document.getElementById('ImaGes').naturalHeight,
-                                ImaGes = document.getElementById("ImaGes");
-                            console.log(YWidth)
-                            console.log(YHeight)
-                            //页面内展示图像的div大小
-                            console.log()
-                            var NHeight = ImaGes.offsetHeight || ImaGes.clientHeight;
-                            console.log(NWidth)
-                            var NWidth = ImaGes.clientWidth || ImaGes.offsetWidth;
-                            console.log(NHeight)
-                            // 缩放比例   动态比例 根据比例调整展示框大小
-                            var Wproportion = YWidth / NWidth; //X轴缩放比例
-                            // console.log(Wproportion);
-                            var Yproportion = YHeight / NHeight; //Y轴缩放比例
-                            console.log(Yproportion);
-                            // 循环赋值
-                            // for (var i = 0; i < coordinate_data.length; i++) {
-                            console.log(coordinate_data)
-                            var codte_data = coordinate_data[0].index_arr;
-                            console.log(codte_data)
-                            for (let j = 0; j < codte_data.length; j++) {
-                                Top_arr.push(codte_data[j].top);
-                                Left_arr.push(codte_data[j].left);
-                                Width_arr.push(codte_data[j].width);
-                                Height_arr.push(codte_data[j].height);
-                                //鼠标进入显示展示框
-                                ShowInput[j].onmouseover = function () {
-                                    var Newdiv = document.createElement("div");
-                                    Newdiv.setAttribute("id", "ShowDiv");
-                                    Newdiv.style.left = Left_arr[j] / Wproportion + 'px';
-                                    // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                                    Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
-                                    Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
-                                    Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                                    // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
-                                    // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
-                                    console.log(Height_arr[j])
-                                    console.log(parseInt(Top_arr[j]))
-                                    // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
-                                    // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                                    $(".imgButBox").append(Newdiv);
+            var r = confirm("确定要删除一条原有数据吗？");
+            if (r == true) {
+                var url = "/api/ocr/validation/del_index_arr/";
+                // var url = "./del.json";
+                this.$http.post(url, datass).then(function (data) {
+                    var _this = this;
+                    console.log(data);
+                    var DataMsg = data.data.successResult;
+                    for (i in DataMsg) {
+                        console.log(DataMsg[i])
+                        // _this.documentTypeList[i] = true;
+                        console.log(_this.documentTypeList.laboratory = true)
+                        console.log(_this.documentTypeList)
+                        _this.RenderingData = DataMsg[0];
+                        console.log(_this.RenderingData);
+                        switch (i) {
+                            case 'invoice':
+                                _this.flagCutting(_this.RenderingData.flag);
+                                break;
+                            case 'cost_listing':
+                                for (var i = 0; i < _this.RenderingData.cos_project_list.length; i++) {
+                                    _this.Flag.push(_this.RenderingData.cos_project_list[i].project_check_str.split('')[6]);
                                 }
-                                //鼠标离开删除展示框
-                                ShowInput[j].addEventListener("mouseleave", function leave() {
-                                    $("div").remove("#ShowDiv");
-                                });
+                                break;
+                        }
+                        break;
+                    }
+                    if (data.data.ret_cd !== 200) {
+                        alert('请求出错，代码：' + data.data.ret_cd)
+                        return;
+                    }
+                    _this.inData = data.data.successResult;
+                    //随动框
+                    setTimeout(function () {
+                        let ShowInput = document.getElementsByClassName("show");
+                        var coordinate = data.data;
+                        var coordinate_data = coordinate.successResult;
+                        var Top_arr = [];
+                        var Width_arr = [];
+                        var Left_arr = [];
+                        var Height_arr = [];
+                        //取源图像的大小值
+                        var
+                            YWidth = document.getElementById('ImaGes').naturalWidth,
+                            YHeight = document.getElementById('ImaGes').naturalHeight,
+                            ImaGes = document.getElementById("ImaGes");
+                        console.log(YWidth)
+                        console.log(YHeight)
+                        //页面内展示图像的div大小
+                        console.log()
+                        var NHeight = ImaGes.offsetHeight || ImaGes.clientHeight;
+                        console.log(NWidth)
+                        var NWidth = ImaGes.clientWidth || ImaGes.offsetWidth;
+                        console.log(NHeight)
+                        // 缩放比例   动态比例 根据比例调整展示框大小
+                        var Wproportion = YWidth / NWidth; //X轴缩放比例
+                        // console.log(Wproportion);
+                        var Yproportion = YHeight / NHeight; //Y轴缩放比例
+                        console.log(Yproportion);
+                        // 循环赋值
+                        // for (var i = 0; i < coordinate_data.length; i++) {
+                        console.log(coordinate_data)
+                        var codte_data = coordinate_data[0].index_arr;
+                        console.log(codte_data)
+                        for (let j = 0; j < codte_data.length; j++) {
+                            Top_arr.push(codte_data[j].top);
+                            Left_arr.push(codte_data[j].left);
+                            Width_arr.push(codte_data[j].width);
+                            Height_arr.push(codte_data[j].height);
+                            //鼠标进入显示展示框
+                            ShowInput[j].onmouseover = function () {
+                                var Newdiv = document.createElement("div");
+                                Newdiv.setAttribute("id", "ShowDiv");
+                                Newdiv.style.left = Left_arr[j] / Wproportion + 'px';
+                                // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
+                                Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
+                                Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
+                                Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
+                                // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
+                                // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
+                                console.log(Height_arr[j])
+                                console.log(parseInt(Top_arr[j]))
+                                // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
+                                // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
+                                $(".imgButBox").append(Newdiv);
                             }
-                            // console.log(Top_arr)
-                            // }
-                        }, 500)
-
-                    }, function (err) {
-                        console.log(err);
-                    });
-                } else if (r == false) {
-                    // console.log("false")
-                }
-            };
-
+                            //鼠标离开删除展示框
+                            ShowInput[j].addEventListener("mouseleave", function leave() {
+                                $("div").remove("#ShowDiv");
+                            });
+                        }
+                        // console.log(Top_arr)
+                        // }
+                    }, 500)
+                }, function (err) {
+                    console.log(err);
+                });
+            } else if (r == false) {
+                // console.log("false")
+            }
             console.log(index);
         },
         //提交按钮点击事件
         submit: function () {
-
+            
             console.log('submit');
             //取旧的值
             var hospital = document.getElementById("hospital");
@@ -387,9 +356,7 @@ var app = new Vue({
             // console.log(index_valuei_arr);
             var Yuan = app.RenderingData;
             console.log(Yuan);
-
-
-            // console.log(input)
+            
             var r = confirm("确认提交数据吗？");
             if (r == true) {
                 if (hospital.value.length == 0) {
@@ -399,33 +366,28 @@ var app = new Vue({
                     // console.log("namekong")
                     alert('请填写姓名');
                 } else {
+                    console.log();
+
                     console.log(User);
-                    console.log(Datas);
-                    var url = '/api/ocr/validation/updata_data/?uuids=' + Datas.uuids + '&image_name=' + Datas.image_name + '&user=' + User;
-                    // var url = '/api/ocr/validation/updata_data/?';
-                    // var url = './zuobiao3.json/?uuids=' + Datas.uuids + '&image_name=' + Datas.image_name + '&user=' + User;
+                    var url = '/api/ocr/validation/updata_data/?uuids=' + nx + '&image_name=' + uuids + '&user=' + User;
+                    // var url = '';
                     console.log(url);
                     console.log(shujv);
                     this.$http.post(url, shujv).then(function (data) {
                         // var _this = this;
                         console.log("post成功");
                         console.log(cloud);
-                        // console.log(app.RenderingData);
-                        // for(let key in app.RenderingData){
-                        //     delete app.RenderingData[key];
-                        // }
-
-                        // console.log(app.RenderingData);
-                        // cloud.style.display = 'block';
+                        
+                        cloud.style.display = 'block';
                         console.log(data);
-
+                        
                     }, function (err) {
                         console.log(err);
                     });
                     alert("提交成功");
-                    var cloud = document.getElementById('cloud');
-                    cloud.style.display = 'block';
-
+                    // var cloud = document.getElementById('cloud');
+                    // cloud.style.display = 'block';
+                    
                     $.ajax({
                         url: '/api/ocr/validation/supporting/',
                         // url: './liebiao.json',
@@ -488,36 +450,26 @@ var app = new Vue({
                                     state1[i].onclick = function () {
                                         console.log("dianjile");
                                         uuids = this.innerHTML;
-                                        nx = this.nextElementSibling.innerHTML;
+                                        var nx = this.nextElementSibling.innerHTML;
                                         console.log(uuids);
                                         console.log(nx);
-                                        Datas = {
+                                        var Datas = {
                                             'uuids': nx,
                                             'image_name': uuids
                                         }
                                         console.log(Datas)
                                         app.qingqiu(Datas);
-                                        var cloud22 = document.getElementById("cloud22");
-                                        var submit = document.getElementById("submit");
-                                        var addbtn = document.getElementById("addbtn");
-                                        submit.style.display = "none";
-                                        addbtn.style.display = "none";
-                                        console.log(cloud22);
-                                        cloud22.style.display = "block";
                                         // ShowDiv(nx, uuids);
                                     };
                                 };
                             }
                             idot();
-                            console.log(app.RenderingData);
                         }
-
                     });
                     // console.log(app.RenderingData = {});
-
+                    
                     // console.log(cloud);
                 }
-
             } else {
                 console.log("postquxiao")
             }
@@ -634,3 +586,32 @@ function mos(event) {
     };
     console.log(movDom.style.left)
 };
+//删除一条数据
+//  function del(obj) {
+//     // console.log(obj.parentNode.parentNode.parentNode)
+//     var del = obj;
+//     console.log(del)
+//     del.parentNode.parentNode.parentNode.removeChild(del.parentNode.parentNode);
+
+// }
+//创建一条数据
+// function addlist(obj) {
+//     // console.log(obj.parentNode.parentNode.parentNode)
+//     var addlist = obj;
+//     console.log(addlist);
+//     var tbody = document.getElementById('tbody');
+//     console.log(tbody);
+//     var Newtr = document.createElement("tr");
+//     var index_name = document.createElement("td");
+//     var index_normal_value = document.createElement("td");
+//     var index_unit = document.createElement("td");
+//     var index_value = document.createElement("td");
+//     Newtr.setAttribute("class", "Newtr");
+//     index_name.setAttribute("class", "index_name");
+//     index_normal_value.setAttribute("class", "index_normal_value");
+//     index_unit.setAttribute("class", "index_unit");
+//     index_value.setAttribute("class", "index_value");
+
+//     // del.parentNode.parentNode.parentNode.removeChild(del.parentNode.parentNode);
+
+// }

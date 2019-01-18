@@ -46,6 +46,103 @@
             height: 18px;
             border: 1px solid #ccc;
         }
+
+        #search_bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+            z-index: 999;
+        }
+
+        .delete {
+            display: inline-block;
+            width: 35px;
+            background-color: #F74631;
+            text-align: center;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .delete:hover {
+            color: white;
+        }
+
+        .state1 {
+            color: green;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .state0 {
+            color: red;
+            /* cursor: pointer; */
+            border-bottom: 1px solid #ccc;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        #listdiv ul li:first-child {
+            font-size: 20px;
+            /* background-color:rgb(238, 238, 238); */
+            color: #BA3E45;
+            border-bottom: 1px solid black;
+            padding-bottom: 3px;
+            margin-bottom: 5px;
+        }
+
+        .ghost {
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .bitian {
+            color: red;
+            font-size: 11px;
+        }
+
+        #addbtn {
+            height: 40px;
+            background-color: #009688;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            width: 150px;
+            position: fixed;
+            bottom: 5px;
+            right: 180px;
+            /* padding-left: 10px; */
+            cursor: pointer;
+        }
+
+        #submit {
+            cursor: pointer;
+        }
+
+        #zhezhao {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: (255, 255, 255, 0.3);
+        }
+
+        #again {
+            position: fixed;
+            top: 10px;
+            right: 288px;
+            display: none;
+            width: 120px;
+            height: 80px;
+            background-color: #009688;
+            color: white;
+            line-height: 80px;
+            text-align: center;
+            border-radius: 5px;
+        }
     </style>
     <!-- <script>
         setInterval(function () {
@@ -62,99 +159,40 @@
             <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
+        <a href="javascript:;" id="again">重新查询</a>
         <div id="user">
             <span id="User_Name">{{request.user}}</span>
-            <a href="/api/ocr/val_tion_login/">退出</a>
+            <a href="/api/ocr/val_validation_logout/">退出</a>
         </div>
     </header>
-    <div id="search">
-        <form action="">
-            <input type="text" placeholder="输入查询编号">
-            <input type="submit" value="查询">
-        </form>
+    <div id="search_bg">
+        <div id="search">
+            <form action="">
+                    <input type="text" placeholder="请输入查询内容：医院名称或病人姓名" id="search_input">
+                <a href="javascript:;" id="search_btn">查询</a>
+                <!-- <input type="submit" value="查询"> -->
+            </form>
+        </div>
+    </div>
+    <div id="listdiv">
+        <ul id="state1ul">
+            <li>查询结果</li>
+        </ul>
+
+        <!-- <ul id="state0ul">
+                    <li>识别中</li>
+                </ul> -->
     </div>
     <div id="app">
-        <!--按钮list-->
-        <!-- <div id="appList">
-                <div>
-                    <div>化验单:</div>
-                    <div v-for="list,index in inData.laboratory" @mouseover="suspensionTitle_block(event,true,list.name,list.hospital_name)"
-                        @mouseout="suspensionTitle_block(event,false)" v-text="'化验单'+(index+1)" @click="ListClick('laboratory',list)"></div>
-                </div>
-            </div> -->
-        <!--按钮list 浮动框-->
-        <!-- <div id="suspensionTitle" @mouseover="suspensionTitle_block('mot')" @mouseout="suspensionTitle_block('mot',false)">
-                <div></div>
-            </div> -->
         <!--化验单-->
         <div class="laboratory" v-if="documentTypeList.laboratory">
             <!-- 列表框 -->
-            <div class="listdiv">
-                <ul>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                    <li>1234567890</li>
-                </ul>
-            </div>
+
             <!-- 图像、控制列表 -->
             <div class="imgAmdListBox">
                 <div class="img_move_box" onmousedown="mos(event)">
                     <div class="imgButBox">
-                        <img id="ImaGes" :src="RenderingData['image_url']" width="100%" alt="未找到图片">
+                        <img id="ImaGes" :src="RenderingData['image_url']" width="100%" alt="请点击左侧列表以查看">
                         <div class="omtImg"></div>
                     </div>
                 </div>
@@ -201,17 +239,19 @@
                             <tr>
                                 <td>
                                     <div>
-                                        <div>医院:</div>
+                                        <div>医院<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value"
+                                                id="hospital">
                                         </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <div>姓名:</div>
+                                        <div>姓名<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value"
+                                                id="name">
                                         </div>
                                     </div>
                                 </td>
@@ -220,7 +260,8 @@
                                         <div>年龄:</div>
                                         <div style="color:#000">
                                             <!-- 待办：年龄性别，报告日期等未修改 -->
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value"
+                                                id="age">
                                         </div>
                                     </div>
                                 </td>
@@ -230,7 +271,8 @@
                                     <div>
                                         <div>性别:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value"
+                                                id="sex">
                                         </div>
                                     </div>
                                 </td>
@@ -238,7 +280,8 @@
                                     <div>
                                         <div>报告日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value"
+                                                id="report_time">
                                         </div>
                                     </div>
                                 </td>
@@ -246,7 +289,8 @@
                                     <div>
                                         <div>检验日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value"
+                                                id="check_time">
                                         </div>
                                     </div>
                                 </td>
@@ -256,7 +300,8 @@
                                     <div>
                                         <div>科室:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value"
+                                                id="department">
                                         </div>
                                     </div>
                                 </td>
@@ -264,7 +309,37 @@
                                     <div>
                                         <div>诊断:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value"
+                                                id="diagnose">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>样本编号:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sample_number.value"
+                                                id="sample_number">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>总指标数:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_total"
+                                                id="index_number_total">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div>已识别的指标数:</div>
+                                        <div style="color:#000">
+                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_defined"
+                                                id="index_number_defined">
                                         </div>
                                     </div>
                                 </td>
@@ -290,6 +365,7 @@
                             <tr v-for="lab in RenderingData.index_arr">
                                 <td>
                                     <div style="color:#000">
+                                        <!-- {{lab.index_name}} -->
                                         <input type="text" placeholder="(空)" class="layui-input show" v-model="lab.index_name">
                                     </div>
                                 </td>
@@ -314,37 +390,32 @@
                                     <i v-if="lab.index_flag==0" style="color:#5daf34;" class="fa fa-circle"></i>
                                     <i v-if="lab.index_flag==3" style="color: #999" class="fa fa-circle"></i>
                                 </td>
-                            </tr>
-                            <!-- <tr class="submit">
-                                <td colspan="5">
-                                    <input type="submit" value='提交入库' id="submit">
+                                <td>
+                                    <!-- <button class="delete">删除</button> -->
+                                    <a href="javascript:;" class="delete" @click="del(lab)">删除</a>
                                 </td>
-                            </tr> -->
-
+                            </tr>
+                            <!-- <tr class="addlist">
+                                            <td colspan="6">
+                                                <a href="javascript:;" id="addbtn" v-on:click="addlist">补充一条新数据</a>
+                                            </td>
+                                        </tr> -->
                         </tbody>
-
                     </table>
                     <div id="null"></div>
-                    <input type="submit" value='提交入库' id="submit">
+                    <input type="button" id="addbtn" @click="addlist" value="补充一条新数据">
+                    <input type="button" value='提交入库' id="submit" @click="submit">
                 </form>
             </div>
         </div>
     </div>
-    <!-- <script>
-        var los = JSON.parse(localStorage.successResult);
-        document.getElementById('User_Name').innerText = localStorage.user_code;
-    </script> -->
+    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
     <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
     <script>
         var pCg = new pCg();
-        pCg.Load(['min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js', 'modify.js']);
+        pCg.Load(['min.js', 'vue-resource.js', 'res_invoice.js', 'res_modify.js']);
     </script>
-    <!-- <script src="../static/js/min.js"></script>
-    <script src="../static/js/vue-resource.js"></script>
-    <script src="../static/js/invoice.js"></script>
-    <script src="../static/js/showdiv.js"></script> -->
-    <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
-    <!-- <script src="../static/js/modify.js"></script> -->
+
 </body>
 
 </html>

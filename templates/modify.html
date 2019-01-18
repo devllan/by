@@ -106,7 +106,7 @@
             position: fixed;
             bottom: 5px;
             right: 180px;
-            padding-left: 10px;
+            /* padding-left: 10px; */
             cursor: pointer;
         }
 
@@ -120,20 +120,125 @@
             height: 100%;
             background-color: (255, 255, 255, 0.3);
         }
+
+        #cloud {
+            display: block;
+            position: absolute;
+            background-color: #ccc;
+            width: 80%;
+            height: 100%;
+            left: 20%;
+            z-index: 999;
+        }
+
+        .cloud1 {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            border: 5px dashed rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+
+        .cloud1 :nth-child(2) {
+            margin-top: 30px;
+        }
+
+        .cloud1 p {
+            font-size: 100px;
+            color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .cloud1 span {
+            font-size: 30px;
+            color: rgba(0, 0, 0, 0.3);
+        }
+
+        .cloud2 {
+            width: 50%;
+            height: 50%;
+            border: 5px dashed rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            position: absolute;
+            border-left: none;
+            left: 50%;
+        }
+
+        .cloud2 p {
+            font-size: 70px;
+            color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cloud3 {
+            width: 50%;
+            height: 50%;
+            border: 5px dashed rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            position: absolute;
+            border-left: none;
+            border-top: none;
+            top: 50%;
+            left: 50%;
+        }
+
+        .cloud3 p {
+            font-size: 70px;
+            color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #addbtn {
+            display: none;
+        }
+
+        #submit {
+            display: none;
+        }
+
+        #cloud22 {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            z-index: 1000;
+            left: 60%;
+            background-color: rgba(0, 0, 0, 0.1);
+            ;
+        }
+
+        #cloud22 p {
+            font-size: 20px;
+        }
+
+        #cloud22 input {
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            height: 40px;
+            background-color: #009688;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            width: 150px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <img src="../static/images/logo.png" alt="" class="logo">
+        <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
         <ul class="list">
-            <li><a href="./updata.html">上传</a></li>
-            <li><a href="./modify.html">修订</a></li>
-            <li><a href="./history.html">查询</a></li>
+            <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
+            <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
+            <li><a href="/api/ocr/val_tion_history/">查询</a></li>
         </ul>
         <div id="user">
-            <span id="User_Name">yonghuming</span>
-            <a href="../templates/login.html">退出</a>
+            <span id="User_Name">{{request.user}}</span>
+            <a href="/api/ocr/val_validation_logout/">退出</a>
         </div>
     </header>
     <!-- <iframe src="./iframe.html" frameborder="0">
@@ -148,6 +253,20 @@
         </ul>
     </div>
     <div id="app">
+        <div id="cloud">
+            <div class="cloud1">
+                <span>点击左侧识别完成的单项，以查看详细数据</span>
+                <p>图</p>
+                <p>片</p>
+                <p>区</p>
+            </div>
+            <div class="cloud2">
+                <p>基本信息</p>
+            </div>
+            <div class="cloud3">
+                <p>处方信息</p>
+            </div>
+        </div>
         <!--化验单-->
         <div class="laboratory" v-if="documentTypeList.laboratory">
             <!-- 列表框 -->
@@ -188,6 +307,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="cloud22" @click="offcloud">
+                <p>点击"修改数据"按钮以修改内容</p>
+                <input type="button" value="修改数据">
             </div>
             <!--信息展示-->
             <div class="information">
@@ -367,8 +490,8 @@
                         </tbody>
                     </table>
                     <div id="null"></div>
-                    <input type="javascript:;" id="addbtn" @click="addlist" value="补充一条新数据">
-                    <input type="javascript:;" value='      提交入库' id="submit" @click="submit">
+                    <input type="button" id="addbtn" @click="addlist" value="补充一条新数据">
+                    <input type="button" value='提交入库' id="submit" @click="submit">
                 </form>
             </div>
         </div>

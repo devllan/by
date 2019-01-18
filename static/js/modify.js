@@ -33,7 +33,7 @@ $.ajax({
             //判断各种情况。
             for (var j = 0; j < name.length; j++) {
                 // console.log(img_name[j]);
-                if (state === 1) {
+                if (state === 1 && audit_state === 0) {
                     todolist.setAttribute("class", "state1");
                     todolist.innerText = img_name;
                     $("#state1ul").append(todolist);
@@ -94,7 +94,7 @@ setInterval(function () {
                 //判断各种情况。
                 for (var j = 0; j < name.length; j++) {
                     // console.log(img_name[j]);
-                    if (state === 1) {
+                    if (state === 1 && audit_state === 0) {
                         todolist.setAttribute("class", "state1");
                         todolist.innerText = img_name;
                         $("#state1ul").append(todolist);
