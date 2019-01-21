@@ -89,6 +89,7 @@ layui.use('upload', function () {
             data: data_list_obj,
             bindAction: '#testListAction',
             field: 'im_id',
+            number:'10',
             choose: function (obj) {
                 _this = this;
                 files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列

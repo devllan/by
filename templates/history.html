@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/custom_visualizations/css/history.css">
     <!-- <link rel="stylesheet" href="../static/css/modify.css"> -->
     <link rel="stylesheet" href="/static/custom_visualizations/css/invoice.css">
-    <link rel="stylesheet" href="/static/custom_visualizations/layui/layui.js>
+    <link rel="stylesheet" href="/static/custom_visualizations/layui/css/layui.css">
     <link rel=" stylesheet" href="/static/custom_visualizations/css/font-awesome.min.css">
     <title>查询</title>
     <style type="text/css">
@@ -131,14 +131,13 @@
         }
 
         #again {
-            position: fixed;
-            top: 10px;
-            right: 288px;
             display: none;
             width: 120px;
             height: 80px;
             background-color: #009688;
             color: white;
+            margin-top: 10px;
+            margin-left: 50px;
             line-height: 80px;
             text-align: center;
             border-radius: 5px;
@@ -158,8 +157,9 @@
             <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
             <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
+            <li><a href="javascript:;" id="again">重新查询</a></li>
         </ul>
-        <a href="javascript:;" id="again">重新查询</a>
+        
         <div id="user">
             <span id="User_Name">{{request.user}}</span>
             <a href="/api/ocr/val_validation_logout/">退出</a>

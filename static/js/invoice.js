@@ -108,10 +108,10 @@ var app = new Vue({
                     }
                     break;
                 }
-                if (data.data.ret_cd !== 200) {
-                    alert('请求出错，代码：' + data.data.ret_cd)
+                if(data.data.ret_cd == 103){
+                    alert('错误：103，您查询的此图片未识别出数据，图片名称' + data.data.successResult);
                     return;
-                }
+                };
                 console.log(Datas);
                 console.log(_this.double)
                 _this.inData = data.data.successResult;
