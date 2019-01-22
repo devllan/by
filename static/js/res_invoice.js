@@ -1,8 +1,5 @@
 var url = '/api/ocr/validation/async_result/';
 // var url = './zuobiaonew.json';
-// var user_code = document.querySelector('#User_Name').innerText;
-// console.log(user_code);
-
 var state1 = document.querySelectorAll('.state1');
 var ghost = document.querySelectorAll('.ghost');
 console.log(state1);
@@ -34,8 +31,6 @@ function idot() {
 }
 idot();
 // console.log(uuids);
-
-
 var dir = 0,
     der = 1;
 var app = new Vue({
@@ -65,7 +60,6 @@ var app = new Vue({
     },
     created: function () {
         console.log('created');
-
     },
     mounted: function () {
         console.log('mounted');
@@ -100,10 +94,6 @@ var app = new Vue({
                     }
                     break;
                 }
-                // if (data.data.ret_cd !== 200) {
-                //     alert('请求出错，代码：' + data.data.ret_cd)
-                //     return;
-                // }
                 if(data.data.ret_cd == 103){
                     alert('错误：103，您查询的此图片未识别出数据，图片名称' + data.data.successResult)
                 };
@@ -132,15 +122,12 @@ var app = new Vue({
                     console.log(NHeight)
                     // 缩放比例   动态比例 根据比例调整展示框大小
                     var Wproportion = YWidth / NWidth; //X轴缩放比例
-                    // console.log(Wproportion);
                     var Yproportion = YHeight / NHeight; //Y轴缩放比例
                     console.log(Yproportion);
                     // 循环赋值
-                    // for (var i = 0; i < coordinate_data.length; i++) {
                     console.log(coordinate_data)
                     var codte_data = coordinate_data[0].index_arr;
                     console.log(codte_data)
-
                     for (let j = 0; j < codte_data.length; j++) {
                         Top_arr.push(codte_data[j].top);
                         Left_arr.push(codte_data[j].left);
@@ -155,24 +142,17 @@ var app = new Vue({
                             Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                             Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                             Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                            // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
-                            // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
                             console.log(Height_arr[j])
                             console.log(parseInt(Top_arr[j]))
-                            // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
-                            // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                             $(".imgButBox").append(Newdiv);
                         }
                         //鼠标离开删除展示框
                         ShowInput[j].addEventListener("mouseleave", function leave() {
                             $("div").remove("#ShowDiv");
-
                         });
                     }
-                    // console.log(Top_arr)
-                    // }
                 }, 500)
-                // console.log(Top_arr)
+
             }, function (err) {
                 console.log(err);
             });
@@ -306,14 +286,11 @@ var app = new Vue({
                                     $("div").remove("#ShowDiv");
                                 });
                             }
-                            // console.log(Top_arr)
-                            // }
                         }, 500)
                     }, function (err) {
                         console.log(err);
                     });
                 } else if (r == false) {
-                    // console.log("false")
                 }
             };
             console.log(index);
@@ -596,32 +573,3 @@ function mos(event) {
     };
     console.log(movDom.style.left)
 };
-//删除一条数据
-//  function del(obj) {
-//     // console.log(obj.parentNode.parentNode.parentNode)
-//     var del = obj;
-//     console.log(del)
-//     del.parentNode.parentNode.parentNode.removeChild(del.parentNode.parentNode);
-
-// }
-//创建一条数据
-// function addlist(obj) {
-//     // console.log(obj.parentNode.parentNode.parentNode)
-//     var addlist = obj;
-//     console.log(addlist);
-//     var tbody = document.getElementById('tbody');
-//     console.log(tbody);
-//     var Newtr = document.createElement("tr");
-//     var index_name = document.createElement("td");
-//     var index_normal_value = document.createElement("td");
-//     var index_unit = document.createElement("td");
-//     var index_value = document.createElement("td");
-//     Newtr.setAttribute("class", "Newtr");
-//     index_name.setAttribute("class", "index_name");
-//     index_normal_value.setAttribute("class", "index_normal_value");
-//     index_unit.setAttribute("class", "index_unit");
-//     index_value.setAttribute("class", "index_value");
-
-//     // del.parentNode.parentNode.parentNode.removeChild(del.parentNode.parentNode);
-
-// }

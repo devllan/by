@@ -102,10 +102,12 @@
             font-size: 20px;
             border: none;
             border-radius: 10px;
-            width: 150px;
-            position: fixed;
-            bottom: 5px;
-            right: 180px;
+            width: 100%;
+            line-height: 40px;
+            text-align: center;
+            /* position: fixed; */
+            /* bottom: 5px; */
+            /* right: 180px; */
             /* padding-left: 10px; */
             cursor: pointer;
         }
@@ -308,9 +310,9 @@
                     </div>
                 </div>
             </div>
-            <div id="cloud22" @click="offcloud">
+            <div id="cloud22">
                 <p>点击"修改数据"按钮以修改内容</p>
-                <input type="button" value="修改数据">
+                <input type="button" value="修改数据" @click="offcloud">
             </div>
             <!--信息展示-->
             <div class="information">
@@ -482,15 +484,15 @@
                                     <a href="javascript:;" class="delete" @click="del(lab)">删除</a>
                                 </td>
                             </tr>
-                            <!-- <tr class="addlist">
-                                        <td colspan="6">
-                                            <a href="javascript:;" id="addbtn" v-on:click="addlist">补充一条新数据</a>
-                                        </td>
-                                    </tr> -->
+                            <tr class="addlist">
+                                <td colspan="6">
+                                    <a href="javascript:;" id="addbtn" @click="addlist">补充一条新数据</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div id="null"></div>
-                    <input type="button" id="addbtn" @click="addlist" value="补充一条新数据">
+                    <!-- <input type="button" id="addbtn" @click="addlist" value="补充一条新数据"> -->
                     <input type="button" value='提交入库' id="submit" @click="submit">
                 </form>
             </div>

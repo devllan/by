@@ -1,8 +1,5 @@
 var url = '/api/ocr/validation/async_result/';
 // var url = './zuobiaonew.json';
-// var user_code = document.querySelector('#User_Name').innerText;
-// console.log(user_code);
-
 var state1 = document.querySelectorAll('.state1');
 var ghost = document.querySelectorAll('.ghost');
 console.log(state1);
@@ -13,7 +10,7 @@ var User = user;
 var uuids;
 var nx;
 var Datas;
-// ste
+// 给左侧按钮添加点击查询单条详细信息事件
 function idot() {
     for (i = 0; i < state1.length; i++) {
         state1[i].onclick = function () {
@@ -36,14 +33,11 @@ function idot() {
             addbtn.style.display = "none";
             console.log(cloud22);
             cloud22.style.display = "block";
-            // ShowDiv(nx, uuids);
         };
     };
 }
 idot();
-// console.log(uuids);
-
-
+//vue
 var dir = 0,
     der = 1;
 var app = new Vue({
@@ -91,7 +85,6 @@ var app = new Vue({
                 var DataMsg = data.data.successResult;
                 for (i in DataMsg) {
                     console.log(DataMsg[i])
-                    // _this.documentTypeList[i] = true;
                     console.log(_this.documentTypeList.laboratory = true)
                     console.log(_this.documentTypeList)
                     _this.RenderingData = DataMsg[0];
@@ -162,29 +155,21 @@ var app = new Vue({
                             Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                             Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                             Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                            // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
-                            // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
                             console.log(Height_arr[j])
                             console.log(parseInt(Top_arr[j]))
-                            // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
-                            // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                             $(".imgButBox").append(Newdiv);
                         }
                         //鼠标离开删除展示框
                         ShowInput[j].addEventListener("mouseleave", function leave() {
                             $("div").remove("#ShowDiv");
-
                         });
                     }
-                    // console.log(Top_arr)
-                    // }
                 }, 500)
-                // console.log(Top_arr)
-
             }, function (err) {
                 console.log(err);
             });
         },
+        //关闭编辑数据上面的遮罩层，添加按钮和提交按钮显示出来
         offcloud: function () {
             console.log("offcloud");
             var cloud22 = document.getElementById("cloud22");
@@ -213,7 +198,7 @@ var app = new Vue({
                 "left": ""
             });
         },
-        //删除一条数据
+        //删除一条数据，默认请求接口去删除库里的数据，如果是新添加的数据，index.id为空的话，直接删除。
         del: function (index) {
             console.log("delete");
             var index_id = index.index_id;
@@ -221,7 +206,6 @@ var app = new Vue({
             var nxx = nx;
             console.log(nxx);
             console.log(index)
-            // var user = document.getElementById("User_Name").innerHTML;
             var datas = {
                 'index_id': index_id,
                 'uuids': nxx,
@@ -231,7 +215,6 @@ var app = new Vue({
             var id = index.index_id;
             console.log(id);
             if (id == "") {
-
                 app.RenderingData.index_arr.pop();
             } else {
                 var r = confirm("确定要删除一条原有数据吗？");
@@ -312,12 +295,8 @@ var app = new Vue({
                                     Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                                     Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                                     Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                                    // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
-                                    // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
                                     console.log(Height_arr[j])
                                     console.log(parseInt(Top_arr[j]))
-                                    // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
-                                    // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                                     $(".imgButBox").append(Newdiv);
                                 }
                                 //鼠标离开删除展示框
@@ -325,23 +304,18 @@ var app = new Vue({
                                     $("div").remove("#ShowDiv");
                                 });
                             }
-                            // console.log(Top_arr)
-                            // }
                         }, 500)
 
                     }, function (err) {
                         console.log(err);
                     });
                 } else if (r == false) {
-                    // console.log("false")
                 }
             };
-
             console.log(index);
         },
         //提交按钮点击事件
         submit: function () {
-
             console.log('submit');
             //取旧的值
             var hospital = document.getElementById("hospital");
@@ -363,40 +337,13 @@ var app = new Vue({
             console.log(app.RenderingData.index_arr);
             console.log(app.RenderingData.hospital.value);
             console.log(app.RenderingData.name.value);
-
-
-            //取新增的值
-            // var index_namei = document.getElementsByClassName("index_namei");
-            // var index_normal_valuei = document.getElementsByClassName("index_normal_valuei");
-            // var index_uniti = document.getElementsByClassName("index_uniti");
-            // var index_valuei = document.getElementsByClassName("index_valuei");
-            // var index_namei_arr = [];
-            // var index_normal_valuei_arr = [];
-            // var index_uniti_arr = [];
-            // var index_valuei_arr = [];
-            // for (var i = 0; i < index_namei.length; i++) {
-            //     // console.log(index_namei[i].value)
-            //     index_namei_arr.push(index_namei[i].value);
-            //     index_normal_valuei_arr.push(index_normal_valuei[i].value);
-            //     index_uniti_arr.push(index_uniti[i].value);
-            //     index_valuei_arr.push(index_valuei[i].value);
-            // }
-            // console.log(index_namei_arr);
-            // console.log(index_normal_valuei_arr);
-            // console.log(index_uniti_arr);
-            // console.log(index_valuei_arr);
             var Yuan = app.RenderingData;
             console.log(Yuan);
-
-
-            // console.log(input)
             var r = confirm("确认提交数据吗？");
             if (r == true) {
                 if (hospital.value.length == 0) {
                     alert('请填写医院');
-                    // console.log("hospitalkong")
                 } else if (name.value.length == 0) {
-                    // console.log("namekong")
                     alert('请填写姓名');
                 } else {
                     console.log(User);
@@ -407,25 +354,15 @@ var app = new Vue({
                     console.log(url);
                     console.log(shujv);
                     this.$http.post(url, shujv).then(function (data) {
-                        // var _this = this;
                         console.log("post成功");
                         console.log(cloud);
-                        // console.log(app.RenderingData);
-                        // for(let key in app.RenderingData){
-                        //     delete app.RenderingData[key];
-                        // }
-
-                        // console.log(app.RenderingData);
-                        // cloud.style.display = 'block';
                         console.log(data);
-
                     }, function (err) {
                         console.log(err);
                     });
                     alert("提交成功");
                     var cloud = document.getElementById('cloud');
                     cloud.style.display = 'block';
-
                     $.ajax({
                         url: '/api/ocr/validation/supporting/',
                         // url: './liebiao.json',
@@ -433,7 +370,6 @@ var app = new Vue({
                         data: {
                             'user_code': user_code
                         },
-                        // dataType: "json",
                         //请求成功时的回调函数，info为后端返回的数据
                         success: function (info) {
                             console.log(info);
@@ -466,14 +402,9 @@ var app = new Vue({
                                         ghost.innerText = uuids;
                                         $("#state1ul").append(ghost);
                                     } else if (state === 0) {
-                                        // zhezhao.setAttribute("id", "zhezhao");
                                         todolist.setAttribute("class", "state0");
                                         todolist.innerText = img_name;
                                         $("#state0ul").append(todolist);
-                                        // ghost.setAttribute("class", "ghost");
-                                        // ghost.innerText = uuids;
-                                        // $(".state0ul").append(ghost);
-                                        // console.log(ghost.innerHTML);
                                     }
                                 }
                             }
@@ -504,32 +435,23 @@ var app = new Vue({
                                         addbtn.style.display = "none";
                                         console.log(cloud22);
                                         cloud22.style.display = "block";
-                                        // ShowDiv(nx, uuids);
                                     };
                                 };
                             }
                             idot();
                             console.log(app.RenderingData);
                         }
-
                     });
-                    // console.log(app.RenderingData = {});
-
-                    // console.log(cloud);
                 }
-
             } else {
                 console.log("postquxiao")
             }
-
-
         },
         flagCutting: function (flag) {
             this.Flag = flag.split('');
             return true
         },
         // 旋转效果
-
         direction: function (data) {
                 var ImaGes = document.getElementsByClassName('imgButBox')[0];
                 console.log(ImaGes);
