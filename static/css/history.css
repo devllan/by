@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
 }
 
 header {
@@ -34,7 +34,7 @@ header {
 }
 
 .list li a:hover {
-    background-color: rgba(186, 62, 69);
+    background-color: rgb(186, 62, 69);
     color: white;
     border-radius: 5px;
 }
@@ -47,7 +47,7 @@ header {
     top: 0px;
     right: 100px;
     border-radius: 10px;
-    /* background-color:rgba(242, 242, 242, 0.4); */
+    /* background-color:rgb(242, 242, 242, 0.4); */
     
 }
 #user span{
@@ -55,7 +55,7 @@ header {
     width: 90px;
     text-align: center;
     line-height: 100px;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgb(0, 0, 0, 0.7);
 }
 #user a{
     display: inline-block;
@@ -64,14 +64,14 @@ header {
     position: absolute;
     top: 35px;
     right: 5px;
-    background-color: rgba(186,62,69);
+    background-color: rgb(186,62,69);
     border-radius: 10px;
     line-height: 30px;
     text-align: center;
     color: white;
 }
 .list :nth-child(3) a {
-    background-color: rgba(186, 62, 69);
+    background-color: rgb(186, 62, 69);
     color: white;
     border-radius: 5px;
 }
