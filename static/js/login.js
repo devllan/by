@@ -74,6 +74,18 @@ $('.submit').click(function () {
                     // }
                     // localStorage['time'] = date;
                     // localStorage.successResult = JSON.stringify(data.successResult[0]);
+                    console.log(data)
+                    var Data = data.successResult;
+                    for (var i = 0; i < Data.length; i++) {
+                        console.log('for');
+                        var locqx = Data[i].is_permissions;
+                        var user_code = Data[i].user_code;
+                        console.log(locqx)
+                    }
+                    window.sessionStorage.setItem("locqx", locqx);
+                    window.sessionStorage.setItem("user_code", user_code);
+                    console.log(window.sessionStorage.getItem("user_code"));
+                    console.log(window.sessionStorage.getItem("locqx"));
                     window.location = '/api/ocr/val_tion_index/'
                 } else if (data.ret_cd === 104) {
                     window.location = '/api/ocr/val_tion_login/'

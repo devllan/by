@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/custom_visualizations/images/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/base.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/user.css">
+    <link rel="stylesheet" href="/static/custom_visualizations/css/layui.css">
+    <title>用户管理</title>
+</head>
+
+<body>
+    <header id="app">
+        <img src="/static/custom_visualizations/images/logo.png" alt="" class="logo">
+        <ul class="list">
+            <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
+            <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
+            <li><a href="/api/ocr/val_tion_history/">查询</a></li>
+            <li><a href="/api/ocr/val_tion_mob_user/">用户管理</a></li>
+        </ul>
+        <div id="user">
+            <span>{{request.user}}</span>
+            <a href="/api/ocr/val_validation_logout/" id="clear">退出</a>
+        </div>
+    </header>
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this" id="xguser">修改账户</li>
+            <li id="deluser">删除账户</li>
+            <li id="adduser">开设账号</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item  layui-show">
+                <form action="" class="layui-form">
+                    <div id="zhucefk">
+                        <h2 class="h2">修改密码</h2>
+                        旧密码:<input type="password" class="tupe name" id="xgname">
+                        新密码:<input type="password" class="tupe pwd" id="xgpwd">
+                        <a href="javascript:;" class="regd" id="xgregd">确认修改</a>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-tab-item">
+                <table id="tbtable" border="0" cellpadding="0">
+                    <tr id="tbhead">
+                        <td>账户名</td>
+                        <td>上次登录时间</td>
+                        <td>邮箱</td>
+                        <td>账户类型</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="layui-tab-item">
+                <form action="" class="layui-form">
+                    <div id="zhucefk">
+                        账号名称:<input type="text" class="tupe name" id="zcname">
+                        邮箱:<input type="text" class="tupe pwd" id="zcyx">
+                        密码:<input type="password" class="tupe pwd" id="zcpwd">
+                        确认密码:<input type="password" class="tupe pwd" id="zcpwd2">
+                        <h4>账户类型：</h4>
+                        <select name="interest" lay-filter="select" id="select">
+                            <option value="wxz" selected="" id="wxz"></option>
+                            <option value="2">普通账户</option>
+                            <option value="1">管理账户</option>
+                            <option value="3">访客账户</option>
+                        </select>
+                        <a href="javascript:;" class="regd" id="zcregd">增加用户</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
+<script src="/static/custom_visualizations/js/user.js"></script>
+<script src="/static/custom_visualizations/layui/layui.js"></script>
+<script src="/static/custom_visualizations/layui/layui.all.js"></script>
+<script src="/static/custom_visualizations/js/clearsession.js"></script>
+</html>

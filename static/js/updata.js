@@ -1,3 +1,23 @@
+//权限上传
+// var locqx = window.sessionStorage.getItem("locqx");
+// var user_code = window.sessionStorage.getItem("user_code");
+// console.log(locqx);
+// console.log(user_code);
+// if (locqx == 1) {
+//     var deluser = document.getElementById('deluser');
+//     var adduser = document.getElementById('adduser');
+//     deluser.style.display = "inline-block";
+//     adduser.style.display = "inline-block";
+//     console.log(locqx);
+// } else if (locqx == 2 || locqx == 3) {
+//     var deluser = document.getElementById('deluser');
+//     var adduser = document.getElementById('adduser');
+//     deluser.style.display = "none";
+//     adduser.style.display = "none";
+//     console.log(locqx);
+// }
+
+
 var fun1, type_id_txt, purpose = new purpose(),
     type_id = purpose.GetQueryString('type'),
     data_list_obj = new Object(),

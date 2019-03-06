@@ -56,9 +56,11 @@
             background-image: url("/static/custom_visualizations/images/background.png");
             background-size: cover;
         }
-        #search_input{
-            border: 1px solid #009688!important;
+
+        #search_input {
+            border: 1px solid #009688 !important;
         }
+
         .delete {
             display: inline-block;
             width: 35px;
@@ -67,6 +69,7 @@
             border-radius: 5px;
             color: white;
         }
+
         .delete {
             display: inline-block;
             width: 35px;
@@ -154,6 +157,7 @@
             text-align: center;
             border-radius: 5px;
         }
+
         body {
             width: 100%;
             height: 100%;
@@ -175,18 +179,19 @@
             <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
             <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
+            <li><a href="/api/ocr/val_tion_mob_user/">用户管理</a></li>
             <li><a href="javascript:;" id="again">重新查询</a></li>
         </ul>
-        
+
         <div id="user">
             <span id="User_Name">{{request.user}}</span>
-            <a href="/api/ocr/val_validation_logout/">退出</a>
+            <a href="/api/ocr/val_validation_logout/" id="clear">退出</a>
         </div>
     </header>
     <div id="search_bg">
         <div id="search">
             <form action="">
-                    <input type="text" placeholder="请输入查询内容：医院名称或病人姓名" id="search_input">
+                <input type="text" placeholder="请输入查询内容：医院名称或病人姓名" id="search_input">
                 <a href="javascript:;" id="search_btn">查询</a>
                 <!-- <input type="submit" value="查询"> -->
             </form>
@@ -433,7 +438,7 @@
         var pCg = new pCg();
         pCg.Load(['min.js', 'vue-resource.js', 'res_invoice.js', 'res_modify.js']);
     </script>
-
+    <script src="/static/custom_visualizations/js/clearsession.js"></script>
 </body>
 
 </html>

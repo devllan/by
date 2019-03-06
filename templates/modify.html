@@ -237,10 +237,11 @@
             <li><a href="/api/ocr/val_tion_sub/">上传</a></li>
             <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
+            <li><a href="/api/ocr/val_tion_mob_user/">用户管理</a></li>
         </ul>
         <div id="user">
             <span id="User_Name">{{request.user}}</span>
-            <a href="/api/ocr/val_validation_logout/">退出</a>
+            <a href="/api/ocr/val_validation_logout/" id="clear">退出</a>
         </div>
     </header>
     <!-- <iframe src="./iframe.html" frameborder="0">
@@ -504,6 +505,7 @@
         var pCg = new pCg();
         pCg.Load(['modify.js', 'min.js', 'vue-resource.js', 'invoice.js', 'showdiv.js']);
     </script>
+    <script src="/static/custom_visualizations/js/clearsession.js"></script>
     <!-- <script src="../static/js/min.js"></script>
     <script src="../static/js/vue-resource.js"></script>
     <script src="../static/js/invoice.js"></script>
