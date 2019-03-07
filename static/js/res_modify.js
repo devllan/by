@@ -25,99 +25,102 @@ btn.onclick = function () {
     // if (search_name == "") {
     //     alert("您还未输入查询内容");
     // } else {
-        console.log("zhezhaosan");
-        zhezhao.style.display = "none";
-        again.style.display = "block";
-        $.ajax({
-            url: "/api/ocr/validation/retrieve/",
-            // url: "./liebiao.json",
-            type: "post",
-            data: {
-                'user': user_code,
-                'search_name': search_name
-            },
-            success: function (info) {
-                // var Appdiv = document.getElementById("app");
-                // Appdiv.style.display = "block";
-                console.log(info);
-                var name = info.successResult;
-                if (name == []) {
-                    alert("查询结果为空");
-                    var zhezhao = document.getElementById("search_bg");
-                    var again = document.getElementById("again");
-                    zhezhao.style.display = "block";
-                    again.style.display = "none";
-                }
-                for (var i = 0; i < name.length; i++) {
-                    var img_name = name[i].image_name;
-                    var state = name[i].state;
-                    var audit_state = name[i].audit_state;
-                    var org_img = name[i].org_img;
-                    var uuids = name[i].uuids;
-                    // console.log(name);
-                    // console.log(img_name);
-                    // console.log(state);
-                    // console.log(audit_state);
-                    // console.log(uuids);
-                    var todolist = document.createElement("p");
-                    var ghost = document.createElement("p");
-                    var zhezhao = document.createElement("div");
-                    //判断各种情况。
-                    for (var j = 0; j < name.length; j++) {
-                        // console.log(img_name[j]);
-                        if (state === 1) {
-                            todolist.setAttribute("class", "state1");
-                            todolist.innerText = img_name;
-                            $("#state1ul").append(todolist);
-                            ghost.setAttribute("class", "ghost");
-                            ghost.innerText = uuids;
-                            $("#state1ul").append(ghost);
-                        } else if (state === 0) {
-                            // zhezhao.setAttribute("id", "zhezhao");
-                            todolist.setAttribute("class", "state0");
-                            todolist.innerText = img_name;
-                            $("#state0ul").append(todolist);
-                            // ghost.setAttribute("class", "ghost");
-                            // ghost.innerText = uuids;
-                            // $(".state0ul").append(ghost);
-                            // console.log(ghost.innerHTML);
-                        }
+    console.log("zhezhaosan");
+    zhezhao.style.display = "none";
+    again.style.display = "block";
+    $.ajax({
+        url: "/api/ocr/validation/retrieve/",
+        // url: "./liebiao.json",
+        type: "post",
+        data: {
+            'user': user_code,
+            'search_name': search_name
+        },
+        success: function (info) {
+            // var Appdiv = document.getElementById("app");
+            // Appdiv.style.display = "block";
+            console.log(info);
+            var name = info.successResult;
+            if (info.ret_cd == '403') {
+                alert("您的权限不足")
+            }
+            if (name == []) {
+                alert("查询结果为空");
+                var zhezhao = document.getElementById("search_bg");
+                var again = document.getElementById("again");
+                zhezhao.style.display = "block";
+                again.style.display = "none";
+            }
+            for (var i = 0; i < name.length; i++) {
+                var img_name = name[i].image_name;
+                var state = name[i].state;
+                var audit_state = name[i].audit_state;
+                var org_img = name[i].org_img;
+                var uuids = name[i].uuids;
+                // console.log(name);
+                // console.log(img_name);
+                // console.log(state);
+                // console.log(audit_state);
+                // console.log(uuids);
+                var todolist = document.createElement("p");
+                var ghost = document.createElement("p");
+                var zhezhao = document.createElement("div");
+                //判断各种情况。
+                for (var j = 0; j < name.length; j++) {
+                    // console.log(img_name[j]);
+                    if (state === 1) {
+                        todolist.setAttribute("class", "state1");
+                        todolist.innerText = img_name;
+                        $("#state1ul").append(todolist);
+                        ghost.setAttribute("class", "ghost");
+                        ghost.innerText = uuids;
+                        $("#state1ul").append(ghost);
+                    } else if (state === 0) {
+                        // zhezhao.setAttribute("id", "zhezhao");
+                        todolist.setAttribute("class", "state0");
+                        todolist.innerText = img_name;
+                        $("#state0ul").append(todolist);
+                        // ghost.setAttribute("class", "ghost");
+                        // ghost.innerText = uuids;
+                        // $(".state0ul").append(ghost);
+                        // console.log(ghost.innerHTML);
                     }
                 }
-                console.log("hihihihihihihi")
-                var state1 = document.querySelectorAll('.state1');
-                var ghost = document.querySelectorAll('.ghost');
-                console.log(state1);
-                console.log(ghost);
-                var cloud = document.getElementById("cloud");
-                var user = document.getElementById("User_Name").innerHTML;
-                var User = user;
-                var uuids;
-                var nx;
-                // ste
-                console.log(state1)
-
-                function idot() {
-                    for (i = 0; i < state1.length; i++) {
-                        state1[i].onclick = function () {
-                            console.log("dianjile");
-                            uuids = this.innerHTML;
-                            nx = this.nextElementSibling.innerHTML;
-                            console.log(uuids);
-                            console.log(nx);
-                            var Datas = {
-                                'uuids': nx,
-                                'image_name': uuids
-                            }
-                            console.log(Datas)
-                            app.qingqiu(Datas);
-                            // ShowDiv(nx, uuids);
-                        };
-                    };
-                }
-                idot();
             }
-        })
+            console.log("hihihihihihihi")
+            var state1 = document.querySelectorAll('.state1');
+            var ghost = document.querySelectorAll('.ghost');
+            console.log(state1);
+            console.log(ghost);
+            var cloud = document.getElementById("cloud");
+            var user = document.getElementById("User_Name").innerHTML;
+            var User = user;
+            var uuids;
+            var nx;
+            // ste
+            console.log(state1)
+
+            function idot() {
+                for (i = 0; i < state1.length; i++) {
+                    state1[i].onclick = function () {
+                        console.log("dianjile");
+                        uuids = this.innerHTML;
+                        nx = this.nextElementSibling.innerHTML;
+                        console.log(uuids);
+                        console.log(nx);
+                        var Datas = {
+                            'uuids': nx,
+                            'image_name': uuids
+                        }
+                        console.log(Datas)
+                        app.qingqiu(Datas);
+                        // ShowDiv(nx, uuids);
+                    };
+                };
+            }
+            idot();
+        }
+    })
     // }
 
 }

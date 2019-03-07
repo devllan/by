@@ -152,7 +152,7 @@ deluser.onclick = function deluser() {
     $.ajax({
         url: '/mob_user/queryset_mob_user/',
         // url: './deluser.json',
-        type: "get",
+        type: "post",
         data: '',
         success: function (info) {
             console.log(info);
@@ -166,6 +166,7 @@ deluser.onclick = function deluser() {
             }
             for (var i = 0; i < name.length; i++) {
                 var username = name[i].username,
+                    delid = name[i].id,
                     is_permissions = name[i].is_permissions,
                     last_login = name[i].last_login,
                     email = name[i].email;
@@ -175,6 +176,7 @@ deluser.onclick = function deluser() {
                 var tdemail = document.createElement("td");
                 var usertr = document.createElement("tr");
                 var alink = document.createElement("a");
+                var delgost = document.createElement('span')
                 usertr.setAttribute("id", "tr" + i);
                 usertr.setAttribute("class", "newtr");
                 $("#tbtable").append(usertr);
@@ -182,6 +184,11 @@ deluser.onclick = function deluser() {
                 tduser.setAttribute("class", "tduser");
                 tduser.innerText = username;
                 $("#tr" + i).append(tduser);
+
+
+                tdemail.setAttribute("class", "tdemail");
+                tdemail.innerText = email;
+                $("#tr" + i).append(tdemail);
 
                 tdtime.setAttribute("class", "tdtime");
                 if (last_login == 'None') {
@@ -192,9 +199,7 @@ deluser.onclick = function deluser() {
 
                 $("#tr" + i).append(tdtime);
 
-                tdemail.setAttribute("class", "tdemail");
-                tdemail.innerText = email;
-                $("#tr" + i).append(tdemail);
+
 
                 tdqx.setAttribute("class", "tdqx");
                 if (is_permissions == '1') {
@@ -206,10 +211,15 @@ deluser.onclick = function deluser() {
                 }
                 // tdqx.innerText = qx;
                 $("#tr" + i).append(tdqx);
+
                 alink.setAttribute("href", "javascript:;");
                 alink.setAttribute("class", "delete");
                 alink.innerText = '删除';
                 $("#tr" + i).append(alink);
+
+                delgost.setAttribute("class", "delgost");
+                delgost.innerText = delid;
+                $("#tr" + i).append(delgost);
 
             };
             //删除一条账户
@@ -221,27 +231,40 @@ deluser.onclick = function deluser() {
                     del[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
+                        // var delgost = document.querySelectorAll('delete');
+                        del = this.innerHTML;
+                        delgostid = this.nextElementSibling.innerHTML;
                         var r = confirm("确定要删除吗？");
                         if (r == true) {
-                            var url = "./del.json";
+                            // var url = "./del.json";
+                            var url = "/mob_user/mob_user_delete/";
                             var datas = {
-                                'user-code': user_code,
-                                'uuids': '456',
+                                'id': delgostid,
                             }
-                            var datass = JSON.stringify(datas);
+                            // var datass = JSON.stringify(datas);
                             $.ajax({
                                 url: url,
                                 type: "post",
-                                data: datass,
+                                data: datas,
                                 success: function (info) {
+                                    if (info.ret_cd == '101') {
+                                        alert('该账户id不存在');
+                                    } else if (info.ret_cd == '200') {
+                                        alert('删除成功');
+                                        console.log(info);
+                                        //刷新
+                                        deluser();
+                                        console.log(datas);
+                                    } else if (info.ret_cd == '403') {
+                                        alert('您的权限不足');
+                                    } else {
+                                        alert(info.errorMsg)
+                                    }
                                     // var _this = this;
                                     // console.log(_this);
                                     // var parent = _this.parentNode;
                                     // console.log(parent);
-                                    console.log(info);
-                                    //刷新
-                                    deluser();
-                                    console.log(datass);
+
                                 }
                             })
                         }

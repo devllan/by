@@ -101,7 +101,7 @@ var app = new Vue({
                     }
                     break;
                 }
-                if(data.data.ret_cd == 103){
+                if (data.data.ret_cd == 103) {
                     alert('错误：103，您查询的此图片未识别出数据，图片名称' + data.data.successResult);
                     return;
                 };
@@ -225,24 +225,31 @@ var app = new Vue({
                         var _this = this;
                         console.log(data);
                         var DataMsg = data.data.successResult;
-                        for (i in DataMsg) {
-                            console.log(DataMsg[i])
-                            // _this.documentTypeList[i] = true;
-                            console.log(_this.documentTypeList.laboratory = true)
-                            console.log(_this.documentTypeList)
-                            _this.RenderingData = DataMsg[0];
-                            console.log(_this.RenderingData);
-                            switch (i) {
-                                case 'invoice':
-                                    _this.flagCutting(_this.RenderingData.flag);
-                                    break;
-                                case 'cost_listing':
-                                    for (var i = 0; i < _this.RenderingData.cos_project_list.length; i++) {
-                                        _this.Flag.push(_this.RenderingData.cos_project_list[i].project_check_str.split('')[6]);
-                                    }
-                                    break;
+                        if (data.data.ret_cd == 200) {
+                            for (i in DataMsg) {
+                                console.log(DataMsg[i])
+                                // _this.documentTypeList[i] = true;
+                                console.log(_this.documentTypeList.laboratory = true)
+                                console.log(_this.documentTypeList)
+                                _this.RenderingData = DataMsg[0];
+                                console.log(_this.RenderingData);
+                                switch (i) {
+                                    case 'invoice':
+                                        _this.flagCutting(_this.RenderingData.flag);
+                                        break;
+                                    case 'cost_listing':
+                                        for (var i = 0; i < _this.RenderingData.cos_project_list.length; i++) {
+                                            _this.Flag.push(_this.RenderingData.cos_project_list[i].project_check_str.split('')[6]);
+                                        }
+                                        break;
+                                }
+                                break;
                             }
-                            break;
+                        } else if (data.data.ret_cd == 403) {
+                            alert('您没有权限')
+                        } else if (data.data.ret_cd !== 200) {
+                            alert('请求出错，代码：' + data.data.ret_cd)
+                            return;
                         }
                         if (data.data.ret_cd !== 200) {
                             alert('请求出错，代码：' + data.data.ret_cd)
@@ -309,8 +316,7 @@ var app = new Vue({
                     }, function (err) {
                         console.log(err);
                     });
-                } else if (r == false) {
-                }
+                } else if (r == false) {}
             };
             console.log(index);
         },
@@ -354,13 +360,24 @@ var app = new Vue({
                     console.log(url);
                     console.log(shujv);
                     this.$http.post(url, shujv).then(function (data) {
-                        console.log("post成功");
+                        if (data.data.ret_cd == '403') {
+                            alert("您没有权限");
+                        } else if (data.data.ret_cd == '200') {
+                            alert("提交成功");
+                            console.log("post成功");
+                        }
                         console.log(cloud);
+                        // console.log(app.RenderingData);
+                        // for(let key in app.RenderingData){
+                        //     delete app.RenderingData[key];
+                        // }
+
+                        // console.log(app.RenderingData);
+                        // cloud.style.display = 'block';
                         console.log(data);
                     }, function (err) {
                         console.log(err);
                     });
-                    alert("提交成功");
                     var cloud = document.getElementById('cloud');
                     cloud.style.display = 'block';
                     $.ajax({

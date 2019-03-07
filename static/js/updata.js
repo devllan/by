@@ -80,6 +80,7 @@ var user_code = document.querySelector('#User_Name').innerText;
 console.log(user_code);
 data_list_obj['user_code'] = user_code;
 console.log(data_list_obj['user_code']);
+
 function data_list(num) {
     data_list_obj['business_id'] = num.value;
 }
@@ -109,7 +110,7 @@ layui.use('upload', function () {
             data: data_list_obj,
             bindAction: '#testListAction',
             field: 'im_id',
-            number:'10',
+            number: '10',
             choose: function (obj) {
                 _this = this;
                 files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
@@ -221,6 +222,9 @@ layui.use('upload', function () {
                             delete files[i]
                         }
                         layer.msg('上传成功');
+                    } else if (data.ret_cd === '403') {
+                        layer.msg('您没有权限上传');
+                        console.log('没有权限');
                     } else {
                         layer.msg('上传失败，请重新上传', {
                             icon: 5
