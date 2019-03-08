@@ -258,7 +258,8 @@ deluser.onclick = function deluser() {
                                     } else if (info.ret_cd == '403') {
                                         alert('您的权限不足');
                                     } else {
-                                        alert(info.errorMsg)
+                                        alert('请求出错，错误：' + info.errorMsg)
+                                        window.location.reload()
                                     }
                                     // var _this = this;
                                     // console.log(_this);
