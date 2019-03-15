@@ -20,8 +20,10 @@ $.ajax({
             var img_name = name[i].image_name;
             var state = name[i].state;
             var audit_state = name[i].audit_state;
-            var org_img = name[i].org_img;
+            var org_img = name[i].org_img; //原图名称
             var uuids = name[i].uuids;
+            var user = name[i].user; //上传者
+            var create_time = name[i].create_time; //上传时间
             // console.log(name);
             // console.log(img_name);
             // console.log(state);
@@ -35,6 +37,7 @@ $.ajax({
                 // console.log(img_name[j]);
                 if (state === 1 && audit_state === 0) {
                     todolist.setAttribute("class", "state1");
+                    todolist.setAttribute("title", "上传者：" + user + ";  原图名称:" + org_img + ";  上传时间:" + create_time);
                     todolist.innerText = img_name;
                     $("#state1ul").append(todolist);
                     ghost.setAttribute("class", "ghost");
@@ -88,6 +91,8 @@ setInterval(function () {
                 var audit_state = name[i].audit_state;
                 var org_img = name[i].org_img;
                 var uuids = name[i].uuids;
+                var user = name[i].user; //上传者
+                var create_time = name[i].create_time; //上传时间
                 var todolist = document.createElement("p");
                 var ghost = document.createElement("p");
                 var zhezhao = document.createElement("div");
@@ -96,6 +101,7 @@ setInterval(function () {
                     // console.log(img_name[j]);
                     if (state === 1 && audit_state === 0) {
                         todolist.setAttribute("class", "state1");
+                        todolist.setAttribute("title", "上传者：" + user + ";  原图名称:" + org_img + ";  上传时间:" + create_time);
                         todolist.innerText = img_name;
                         $("#state1ul").append(todolist);
                         ghost.setAttribute("class", "ghost");

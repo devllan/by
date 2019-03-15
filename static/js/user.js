@@ -26,31 +26,27 @@ regd.onclick = function () {
     var pwd = document.querySelector('#zcpwd').value;
     var qx = document.querySelector('#select').value;
     var pwd2 = document.querySelector('#zcpwd2').value;
-    var yx = document.querySelector('#zcyx').value;
-    var pattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-        str = yx;
-    var tf = pattern.test(str);
-    console.log(tf);
+    // var yx = document.querySelector('#zcyx').value;
+    // var pattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+    //     str = yx;
+    // var tf = pattern.test(str);
+    // console.log(tf);
     if (login == '') {
         alert("您还未填写账户名");
     } else if (qx == 'wxz') {
         alert('您还未选择账户类型');
     } else if (pwd == '') {
         alert('您还未填写密码');
-    } else if (yx == '') {
-        alert('您还未填写邮箱');
-    } else if (pwd2 == '') {
+    }  else if (pwd2 == '') {
         alert('您还未确认密码');
     } else if (pwd != pwd2) {
         alert('两次输入的密码不一致');
-    } else if (tf == false) {
-        alert('您输入的邮箱有误');
-    } else {
+    }  else {
         var obj = new Object();
         obj['username'] = login;
         obj['password'] = pwd;
         obj['password2'] = pwd2;
-        obj['email'] = yx;
+        // obj['email'] = yx;
         obj['state'] = qx;
         console.log(login);
         console.log(pwd);
@@ -64,9 +60,7 @@ regd.onclick = function () {
             success: function (data) {
                 if (data.errorMsg == 'Username exists') {
                     alert('此用户名已被占用');
-                } else if (data.errorMsg == 'Email exists') {
-                    alert('此邮箱已被占用');
-                } else if (data.ret_cd == 500) {
+                }  else if (data.ret_cd == 500) {
                     alert('服务器错误');
                 } else if (data.ret_cd == 403) {
                     alert('您没有权限');
@@ -74,11 +68,11 @@ regd.onclick = function () {
                     var clogin = document.querySelector('#zcname');
                     var cpwd = document.querySelector('#zcpwd');
                     var cpwd2 = document.querySelector('#zcpwd2');
-                    var cyx = document.querySelector('#zcyx');
+                    // var cyx = document.querySelector('#zcyx');
                     clogin.value = '';
                     cpwd.value = '';
                     cpwd2.value = '';
-                    cyx.value = '';
+                    // cyx.value = '';
                     console.log(data);
                     alert('注册完成');
                 }
@@ -186,9 +180,9 @@ deluser.onclick = function deluser() {
                 $("#tr" + i).append(tduser);
 
 
-                tdemail.setAttribute("class", "tdemail");
-                tdemail.innerText = email;
-                $("#tr" + i).append(tdemail);
+                // tdemail.setAttribute("class", "tdemail");
+                // tdemail.innerText = email;
+                // $("#tr" + i).append(tdemail);
 
                 tdtime.setAttribute("class", "tdtime");
                 if (last_login == 'None') {
