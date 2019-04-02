@@ -130,16 +130,23 @@ setInterval(function () {
                     state1[i].onclick = function () {
                         console.log("dianjile");
                         uuids = this.innerHTML;
-                        var nx = this.nextElementSibling.innerHTML;
+                        nx = this.nextElementSibling.innerHTML;
                         console.log(uuids);
                         console.log(nx);
-                        var Datas = {
+                        Datas = {
                             'uuids': nx,
                             'image_name': uuids
                         }
+            
                         console.log(Datas)
                         app.qingqiu(Datas);
-                        // ShowDiv(nx, uuids);
+                        var cloud22 = document.getElementById("cloud22");
+                        var submit = document.getElementById("submit");
+                        var addbtn = document.getElementById("addbtn");
+                        submit.style.display = "none";
+                        addbtn.style.display = "none";
+                        console.log(cloud22);
+                        cloud22.style.display = "block";
                     };
                 };
             }

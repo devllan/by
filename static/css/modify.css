@@ -8,6 +8,7 @@ header {
     position: relative;
     top: 0px;
     background-color: white;
+    border-bottom: 2px solid red;
 }
 
 .logo {
@@ -17,9 +18,10 @@ header {
 
 .list {
     position: absolute;
-    height: 100px;
-    line-height: 100px;
+    height: 45px;
+    line-height: 45px;
     left: 400px;
+    margin-top: 55px;
 }
 
 .list li {
@@ -31,6 +33,10 @@ header {
     width: 120px;
     text-align: center;
     margin-left: 5px;
+    background-color: #dcd9d9;
+    border-radius: 5px;
+    font-family: '隶书';
+    font-size: 23px;
 }
 
 .list li a:hover {
@@ -41,28 +47,35 @@ header {
 
 #user{
     display: inline-block;
-    width: 230px;
-    height: 100px;
+    width: 250px;
+    height: 70px;
     position: absolute;
-    top: 0px;
-    right: 100px;
+    top: 20px;
+    right: 0px;
     border-radius: 10px;
+    border: 2px solid rgb(248, 248, 248);
+    background-image: url(../images/userimg.png);
+    background-position: left;
+    background-position-x: 5px;
+    background-repeat: no-repeat;
     /* background-color:rgb(242, 242, 242, 0.4); */
     
 }
 #user span{
     display: inline-block;
-    width: 90px;
+    /* width: 90px; */
+    overflow: hidden;
     text-align: center;
-    line-height: 100px;
-    color: rgb(0, 0, 0, 0.7);
+    line-height: 70px;
+    margin-left: 50px;
+    color: rgba(0, 0, 0, 0.7);
 }
 #user a{
     display: inline-block;
     width: 70px;
     height: 30px;
     position: absolute;
-    top: 35px;
+    top: 20px;
     right: 5px;
     background-color: rgb(186,62,69);
     border-radius: 10px;
