@@ -227,6 +227,22 @@
             width: 150px;
             cursor: pointer;
         }
+
+        #wtpicf {
+            /* font-size: 18px; */
+            color: #F74631;
+            border-bottom: 1px solid black;
+        }
+
+        #wtpic {
+            font-size: 16px;
+            color: #F74631;
+        }
+
+        #wtpic1 {
+            font-size: 20px;
+            color: #ba3e45;
+        }
     </style>
 </head>
 
@@ -248,6 +264,11 @@
         
             </iframe> -->
     <div id="listdiv">
+        <div id="wtpicf">
+            <p id="wtpic1"></p>
+            <p id="wtpic"></p>
+            <!-- 当前查看：17611680387_1551321448_7832.jpg -->
+        </div>
         <ul id="state1ul">
             <li>识别完成</li>
         </ul>
@@ -331,8 +352,8 @@
                                     <div>
                                         <div>医院<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.hospital.value"
-                                                id="hospital">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.hospital.value" id="hospital">
                                         </div>
                                     </div>
                                 </td>
@@ -340,8 +361,8 @@
                                     <div>
                                         <div>姓名<span class="bitian">(必填*)</span>:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.name.value"
-                                                id="name">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.name.value" id="name">
                                         </div>
                                     </div>
                                 </td>
@@ -350,8 +371,8 @@
                                         <div>年龄:</div>
                                         <div style="color:#000">
                                             <!-- 待办：年龄性别，报告日期等未修改 -->
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.age.value"
-                                                id="age">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.age.value" id="age">
                                         </div>
                                     </div>
                                 </td>
@@ -361,8 +382,8 @@
                                     <div>
                                         <div>性别:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sex.value"
-                                                id="sex">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.sex.value" id="sex">
                                         </div>
                                     </div>
                                 </td>
@@ -370,8 +391,8 @@
                                     <div>
                                         <div>报告日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.report_time.value"
-                                                id="report_time">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.report_time.value" id="report_time">
                                         </div>
                                     </div>
                                 </td>
@@ -379,8 +400,8 @@
                                     <div>
                                         <div>检验日期:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.check_time.value"
-                                                id="check_time">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.check_time.value" id="check_time">
                                         </div>
                                     </div>
                                 </td>
@@ -390,8 +411,8 @@
                                     <div>
                                         <div>科室:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.department.value"
-                                                id="department">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.department.value" id="department">
                                         </div>
                                     </div>
                                 </td>
@@ -399,8 +420,8 @@
                                     <div>
                                         <div>诊断:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.diagnose.value"
-                                                id="diagnose">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.diagnose.value" id="diagnose">
                                         </div>
                                     </div>
                                 </td>
@@ -408,8 +429,8 @@
                                     <div>
                                         <div>样本编号:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.sample_number.value"
-                                                id="sample_number">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.sample_number.value" id="sample_number">
                                         </div>
                                     </div>
                                 </td>
@@ -419,8 +440,8 @@
                                     <div>
                                         <div>总指标数:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_total"
-                                                id="index_number_total">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.index_number_total" id="index_number_total">
                                         </div>
                                     </div>
                                 </td>
@@ -428,8 +449,8 @@
                                     <div>
                                         <div>已识别的指标数:</div>
                                         <div style="color:#000">
-                                            <input type="text" placeholder="(空)" class="layui-input" v-model="RenderingData.index_number_defined"
-                                                id="index_number_defined">
+                                            <input type="text" placeholder="(空)" class="layui-input"
+                                                v-model="RenderingData.index_number_defined" id="index_number_defined">
                                         </div>
                                     </div>
                                 </td>
@@ -456,22 +477,26 @@
                                 <td>
                                     <div style="color:#000">
                                         <!-- {{lab.index_name}} -->
-                                        <input type="text" placeholder="(空)" class="layui-input show" v-model="lab.index_name">
+                                        <input type="text" placeholder="(空)" class="layui-input show"
+                                            v-model="lab.index_name">
                                     </div>
                                 </td>
                                 <td>
                                     <div style="color:#000">
-                                        <input type="text" placeholder="(空)" class="layui-input" v-model="lab.index_normal_value">
+                                        <input type="text" placeholder="(空)" class="layui-input"
+                                            v-model="lab.index_normal_value">
                                     </div>
                                 </td>
                                 <td>
                                     <div style="color:#000">
-                                        <input type="text" placeholder="(空)" class="layui-input" v-model="lab.index_unit">
+                                        <input type="text" placeholder="(空)" class="layui-input"
+                                            v-model="lab.index_unit">
                                     </div>
                                 </td>
                                 <td>
                                     <div style="color:#000">
-                                        <input type="text" placeholder="(空)" class="layui-input Value" v-model="lab.index_value">
+                                        <input type="text" placeholder="(空)" class="layui-input Value"
+                                            v-model="lab.index_value">
                                     </div>
                                 </td>
                                 <td style="text-align: center">

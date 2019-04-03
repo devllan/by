@@ -103,6 +103,9 @@ setInterval(function () {
                         todolist.setAttribute("class", "state1");
                         todolist.setAttribute("title", "上传者：" + user + ";  原图名称:" + org_img + ";  上传时间:" + create_time);
                         todolist.innerText = img_name;
+                        if (window.sessionStorage.getItem("wtlist") == img_name) {
+                            todolist.style.background = "rgba(0,0,0,0.2)";
+                        }
                         $("#state1ul").append(todolist);
                         ghost.setAttribute("class", "ghost");
                         ghost.innerText = uuids;
@@ -137,7 +140,12 @@ setInterval(function () {
                             'uuids': nx,
                             'image_name': uuids
                         }
-            
+                        for (j = 0; j < state1.length; j++) {
+                            state1[j].style.background = "white"
+                        }
+                        window.sessionStorage.setItem("wtlist", uuids);
+                        this.style.background = "rgba(0,0,0,0.2)";
+                        console.log(window.sessionStorage.getItem("wtlist"));
                         console.log(Datas)
                         app.qingqiu(Datas);
                         var cloud22 = document.getElementById("cloud22");
@@ -147,6 +155,15 @@ setInterval(function () {
                         addbtn.style.display = "none";
                         console.log(cloud22);
                         cloud22.style.display = "block";
+                        console.log(uuids)
+                        var wtpic = document.getElementById("wtpic");
+                        var wtpic1 = document.getElementById("wtpic1");
+                        wtpic.innerText = '';
+                        console.log(uuids)
+                        wtpic1.innerText = '当前查看:';
+                        wtpic.innerText = uuids;
+                        // console.log(this);
+                        // ShowDiv(nx, uuids);
                     };
                 };
             }

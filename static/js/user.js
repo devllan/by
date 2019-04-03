@@ -37,11 +37,11 @@ regd.onclick = function () {
         alert('您还未选择账户类型');
     } else if (pwd == '') {
         alert('您还未填写密码');
-    }  else if (pwd2 == '') {
+    } else if (pwd2 == '') {
         alert('您还未确认密码');
     } else if (pwd != pwd2) {
         alert('两次输入的密码不一致');
-    }  else {
+    } else {
         var obj = new Object();
         obj['username'] = login;
         obj['password'] = pwd;
@@ -60,7 +60,7 @@ regd.onclick = function () {
             success: function (data) {
                 if (data.errorMsg == 'Username exists') {
                     alert('此用户名已被占用');
-                }  else if (data.ret_cd == 500) {
+                } else if (data.ret_cd == 500) {
                     alert('服务器错误');
                 } else if (data.ret_cd == 403) {
                     alert('您没有权限');
@@ -89,10 +89,13 @@ xgregd.onclick = function () {
     console.log('beidianle');
     var login = document.querySelector('#xgname').value;
     var pwd = document.querySelector('#xgpwd').value;
+    var pwd2 = document.querySelector('#xgpwd2').value;
     if (login == '') {
         alert("您还未填写现有的密码");
     } else if (pwd == '') {
         alert('您还未填写新的密码');
+    } else if (pwd != pwd2) {
+        alert('两次输入密码不一致');
     } else {
         var obj = new Object();
         obj['oldpassword'] = login;
@@ -118,8 +121,10 @@ xgregd.onclick = function () {
                 } else if (data.ret_cd == 200) {
                     var dlogin = document.querySelector('#xgname');
                     var dpwd = document.querySelector('#xgpwd');
+                    var dpwd2 = document.querySelector('#xgpwd2');
                     dlogin.value = '';
                     dpwd.value = '';
+                    dpwd2.value = '';
                     alert('修改完成，跳回到登录页面');
                     window.sessionStorage.clear();
                     console.log('clear session')

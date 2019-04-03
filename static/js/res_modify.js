@@ -117,6 +117,18 @@ btn.onclick = function () {
                         }
                         console.log(Datas)
                         app.qingqiu(Datas);
+                        for (j = 0; j < state1.length; j++) {
+                            state1[j].style.background = "white"
+                        }
+                        this.style.background = "rgba(0,0,0,0.2)";
+                        var wtpic = document.getElementById("wtpic");
+                        var wtpic1 = document.getElementById("wtpic1");
+                        wtpic.innerText = '';
+                        wtpic1.innerText = '当前查看:';
+                        wtpic.innerText = uuids;
+                        console.log(window.sessionStorage.getItem("wtlist"));
+                        console.log(Datas)
+                        app.qingqiu(Datas);
                         // ShowDiv(nx, uuids);
                     };
                 };

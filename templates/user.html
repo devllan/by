@@ -11,9 +11,19 @@
     <link rel="stylesheet" href="/static/custom_visualizations/css/layui.css">
     <title>用户管理</title>
     <style>
-        .delgost{
-                display: none;
-            }
+        .delgost {
+            display: none;
+        }
+
+        .layui-tab-card {
+            /* box-shadow: none; */
+            /* border: none; */
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            width: 80%;
+            margin-left: 10%;
+        }
     </style>
 </head>
 
@@ -44,6 +54,7 @@
                         <h2 class="h2">修改密码</h2>
                         旧密码:<input type="password" class="tupe name" id="xgname">
                         新密码:<input type="password" class="tupe pwd" id="xgpwd">
+                        确认密码:<input type="password" class="tupe pwd" id="xgpwd2">
                         <a href="javascript:;" class="regd" id="xgregd">确认修改</a>
                     </div>
                 </form>
@@ -62,7 +73,7 @@
             <div class="layui-tab-item">
                 <form action="" class="layui-form">
                     <div id="zhucefk">
-                        账号名称:<input type="text" class="tupe name" id="zcname">
+                        账号名称:<input type="text" class="tupe name" id="zcname" placeholder="可以使用英文和数字，用户名不宜过长">
                         <!-- 邮箱:<input type="text" class="tupe pwd" id="zcyx"> -->
                         密码:<input type="password" class="tupe pwd" id="zcpwd">
                         确认密码:<input type="password" class="tupe pwd" id="zcpwd2">

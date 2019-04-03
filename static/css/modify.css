@@ -45,7 +45,7 @@ header {
     border-radius: 5px;
 }
 
-#user{
+#user {
     display: inline-block;
     width: 250px;
     height: 70px;
@@ -59,9 +59,10 @@ header {
     background-position-x: 5px;
     background-repeat: no-repeat;
     /* background-color:rgb(242, 242, 242, 0.4); */
-    
+
 }
-#user span{
+
+#user span {
     display: inline-block;
     /* width: 90px; */
     overflow: hidden;
@@ -70,25 +71,28 @@ header {
     margin-left: 50px;
     color: rgba(0, 0, 0, 0.7);
 }
-#user a{
+
+#user a {
     display: inline-block;
     width: 70px;
     height: 30px;
     position: absolute;
     top: 20px;
     right: 5px;
-    background-color: rgb(186,62,69);
+    background-color: rgb(186, 62, 69);
     border-radius: 10px;
     line-height: 30px;
     text-align: center;
     color: white;
 }
+
 .list :nth-child(2) a {
     background-color: rgb(186, 62, 69);
     color: white;
     border-radius: 5px;
 }
-#addbtn{
-    width:100%;
+
+#addbtn {
+    width: 100%;
     height: 30px;
 }
