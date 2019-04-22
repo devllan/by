@@ -1,23 +1,11 @@
-//权限上传
-// var locqx = window.sessionStorage.getItem("locqx");
-// var user_code = window.sessionStorage.getItem("user_code");
-// console.log(locqx);
-// console.log(user_code);
-// if (locqx == 1) {
-//     var deluser = document.getElementById('deluser');
-//     var adduser = document.getElementById('adduser');
-//     deluser.style.display = "inline-block";
-//     adduser.style.display = "inline-block";
-//     console.log(locqx);
-// } else if (locqx == 2 || locqx == 3) {
-//     var deluser = document.getElementById('deluser');
-//     var adduser = document.getElementById('adduser');
-//     deluser.style.display = "none";
-//     adduser.style.display = "none";
-//     console.log(locqx);
-// }
+var locqx = window.sessionStorage.getItem("locqx");
+console.log(locqx)
+if (locqx == 1) {
+    var upload = document.getElementById('lodall');
+    upload.style.display = 'none';
+    alert("您的账户类型不支持上传");
 
-
+}
 var fun1, type_id_txt, purpose = new purpose(),
     type_id = purpose.GetQueryString('type'),
     data_list_obj = new Object(),
@@ -25,6 +13,7 @@ var fun1, type_id_txt, purpose = new purpose(),
 var Suffix = '';
 var files_type = 'img';
 var upload_Url = '/api/ocr/validation/async_analysis/';
+// var upload_Url = './fkupdata.json';
 /*
  * 判断当前上传类型
  * */
@@ -80,10 +69,8 @@ var user_code = document.querySelector('#User_Name').innerText;
 console.log(user_code);
 data_list_obj['user_code'] = user_code;
 console.log(data_list_obj['user_code']);
-
-function data_list(num) {
-    data_list_obj['business_id'] = num.value;
-}
+var logo = window.sessionStorage.getItem("logo");
+data_list_obj['logo'] = logo;
 // 提交的
 data_list_obj_ = JSON.stringify(data_list_obj);
 var files;
@@ -92,6 +79,8 @@ try {
 } catch (err) {
     console.log(err);
 }
+var l = 1;
+var k = 1;
 /*
  * layer上传方法
  * */
@@ -107,7 +96,17 @@ layui.use('upload', function () {
             exts: Suffix,
             multiple: true,
             auto: false,
-            data: data_list_obj,
+            data: {
+                'type':1002,
+                'user_code':user_code,
+                'logo':logo,
+                'the_user_id': (function () {
+                    var zhi = document.getElementById('BT_inp'+ k).value;
+                    console.log(zhi)
+                    k++;
+                    return zhi
+                }),
+            },
             bindAction: '#testListAction',
             field: 'im_id',
             number: '10',
@@ -121,11 +120,12 @@ layui.use('upload', function () {
                     var sso = new Object();
                     var ss = getImgURL(file);
                     sso['a'] = ss;
-                    if (type_id == '100002') {
-                        tr = $(['<tr id="upload-' + index + '">', '<td>' + file.name + '</td>', '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>', '<td>等待上传</td>', '<td>', '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>', '<button class="layui-btn layui-btn-mini" onclick="See(\'' + sso.a + '\')">预览</button>', '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>', '</td>', '</tr>'].join(''));
-                    } else {
-                        tr = $(['<tr id="upload-' + index + '">', '<td>' + file.name + '</td>', '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>', '<td>等待上传</td>', '<td>', '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>', '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>', '</td>', '</tr>'].join(''));
-                    }
+                    console.log(file)
+                    // if (type_id == '100002') {
+                    tr = $(['<tr id="upload-' + index + '">', '<td onclick="See(\'' + sso.a + '\')" style="curser:pointer;">' + file.name + '</td>', '<td>' + '<input id="BT_inp' + l + '"value="' + l++ + '">' + '</td>', '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>', '<td>等待上传</td>', '<td>', '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>', '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>', '</td>', '</tr>'].join(''));
+                    // } else {
+                    //     tr = $(['<tr id="upload-' + index + '">', '<td>' + file.name + '</td>', '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>', '<td>等待上传</td>', '<td>', '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>', '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>', '</td>', '</tr>'].join(''));
+                    // }
                     //单个重传
                     tr.find('.demo-reload').on('click', function () {
                         obj.upload(index, file);
@@ -138,6 +138,15 @@ layui.use('upload', function () {
                     });
                     demoListView.append(tr);
                 });
+            },
+            before: function (obj) {
+                layer.load(); //上传loading
+                var BT_inp = document.getElementById('BT_inp'+ k);
+                console.log(BT_inp);
+                
+                k=1;
+                console.log($('#BT_inp1').val());
+                
             },
             done: function (res, index, upload) {
                 if (res.errorMsg == "user_code is None") {
@@ -164,17 +173,18 @@ layui.use('upload', function () {
             }
         });
     See = function (index) {
+        console.log(index)
         layer.open({
-            type: 2 //此处以iframe举例
+            type: 1 //此处以iframe举例
                 ,
-            title: 'PDF预览',
+            title: '预览',
             area: ['50%', '70%'],
             shade: 0.2,
             maxmin: true,
             offset: [ //为了演示，随机坐标
                 '25%', '25%'
             ],
-            content: index,
+            content: "<img src='" + index + "' style='width:100%;'>",
             btn: ['关闭'] //只是为了演示
                 ,
             btn1: function () {
@@ -192,6 +202,9 @@ layui.use('upload', function () {
      * */
     fun1 = function () {
 
+        // if (BT_inp.value === '') {
+        //     layer.tips('Hi，这里是必填项', '#yrwu');
+        // } else {
         var fe = new FormData();
         var index = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
@@ -200,41 +213,11 @@ layui.use('upload', function () {
             layer.closeAll();
             layer.msg('请选择图片！');
             return;
-        }
-        if (type_id == '100001' || type_id == '1005' || type_id == '1006') {
-            for (i in files) {
-                fe.append('im_id', files[i]);
-            }
-            for (i in data_list_obj) {
-                fe.append(i, data_list_obj[i]);
-            }
-            $.ajax({
-                url: '/api/ocr/validation/async_analysis/',
-                type: "post",
-                data: fe,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    layer.closeAll();
-                    if (data.errorMsg === '') { //上传成功
-                        document.getElementById('demoList').innerHTML = '';
-                        for (i in files) {
-                            delete files[i]
-                        }
-                        layer.msg('上传成功');
-                    } else if (data.ret_cd === '403') {
-                        layer.msg('您没有权限上传');
-                        console.log('没有权限');
-                    } else {
-                        layer.msg('上传失败，请重新上传', {
-                            icon: 5
-                        });
-                    }
-                }
-            });
         } else {
-            $('#testListAction').click()
+
+            $('#testListAction').click();
         }
 
     }
+    //     }
 });

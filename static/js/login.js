@@ -80,12 +80,23 @@ $('.submit').click(function () {
                         console.log('for');
                         var locqx = Data[i].is_permissions;
                         var user_code = Data[i].user_code;
+                        console.log(Data[i].hos)
+                        for (var j = 0; j < Data[i].hos.length; j++){
+                            var id = Data[i].hos[j].id;
+                            var logo = Data[i].hos[j].logo;
+                        }
+                            
+                        console.log(logo)
                         console.log(locqx)
                     }
                     window.sessionStorage.setItem("locqx", locqx);
                     window.sessionStorage.setItem("user_code", user_code);
+                    window.sessionStorage.setItem("id", id);
+                    window.sessionStorage.setItem("logo", logo);
                     console.log(window.sessionStorage.getItem("user_code"));
                     console.log(window.sessionStorage.getItem("locqx"));
+                    console.log(window.sessionStorage.getItem("id"));
+                    console.log(window.sessionStorage.getItem("logo"));
                     window.location = '/api/ocr/val_tion_index/'
                 } else if (data.ret_cd === 104) {
                     window.location = '/api/ocr/val_tion_login/'

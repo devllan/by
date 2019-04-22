@@ -46,7 +46,7 @@
         </div>
     </header>
     <div class="layui-upload">
-        <div class="layui-form-item">
+        <div class="layui-form-item" id="lodall">
             <button type="button" class="layui-btn layui-btn-normal" id="testList">选择文件</button>
             <!-- <div class="layui-inline">
                     <label class="layui-form-label">业务号码</label>
@@ -60,7 +60,8 @@
             <table class="layui-table">
                 <thead>
                     <tr>
-                        <th>文件名<span style="color:red">*(每次最多上传十张图片)</span></th>
+                        <th>文件名<span style="color:red">*(每次最多上传十张图片,用户ID字段不可重复)</span></th>
+                        <th>患者ID</th>
                         <th>大小</th>
                         <th>状态</th>
                         <th>操作</th>
