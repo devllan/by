@@ -120,16 +120,21 @@
         }
 
         #addbtn {
-            height: 40px;
-            background-color: #009688;
-            color: white;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            width: 150px;
-            position: fixed;
-            bottom: 5px;
-            right: 180px;
+            display: inline-block;
+            height: 30px;
+            /* background-color: #009688; */
+            color: #7A0108;
+            font-size: 16px;
+            border: 1px solid #7A0108;
+            border-radius: 5px;
+            width: 70%;
+            margin-left: 15%;
+            box-sizing: border-box;
+            line-height: 30px;
+            text-align: center;
+            /* position: fixed; */
+            /* bottom: 5px; */
+            /* right: 180px; */
             /* padding-left: 10px; */
             cursor: pointer;
         }
@@ -180,6 +185,21 @@
             font-size: 20px;
             color: #ba3e45;
         }
+
+        #submit {
+            margin-top: -70px;
+            left: 0px;
+        }
+        .imgAmdListBox{
+            left: 0;
+            width: 50%;
+            height: 100%;
+        }
+        .information{
+            left: 50%;
+            width: 50%;
+
+        }
     </style>
     <!-- <script>
         setInterval(function () {
@@ -196,7 +216,7 @@
             <li><a href="/api/ocr/val_tion_correct/">修订</a></li>
             <li><a href="/api/ocr/val_tion_history/">查询</a></li>
             <li><a href="/api/ocr/val_tion_mob_user/">用户管理</a></li>
-            <li><a href="javascript:;" id="again">重新查询</a></li>
+            <li><a href="javascript:;" id="again">返回列表</a></li>
         </ul>
 
         <div id="user">
@@ -212,21 +232,12 @@
                 <!-- <input type="submit" value="查询"> -->
             </form>
         </div>
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+        </script>
     </div>
-    <div id="listdiv">
-        <div id="wtpicf">
-            <p id="wtpic1"></p>
-            <p id="wtpic"></p>
-            <!-- 当前查看：17611680387_1551321448_7832.jpg -->
-        </div>
-        <ul id="state1ul">
-            <li>查询结果</li>
-        </ul>
-
-        <!-- <ul id="state0ul">
-                    <li>识别中</li>
-                </ul> -->
-    </div>
+    
     <div id="app">
         <!--化验单-->
         <div class="laboratory" v-if="documentTypeList.laboratory">
@@ -448,16 +459,27 @@
                                                 <a href="javascript:;" id="addbtn" v-on:click="addlist">补充一条新数据</a>
                                             </td>
                                         </tr> -->
+                            <tr class="addlist">
+                                <td>
+                                    <a href="javascript:;" id="addbtn" @click="addlist">添加</a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                     <div id="null"></div>
-                    <input type="button" id="addbtn" @click="addlist" value="补充一条新数据">
+                    <!-- <input type="button" id="addbtn" @click="addlist" value="补充一条新数据"> -->
                     <input type="button" value='提交入库' id="submit" @click="submit">
                 </form>
             </div>
         </div>
     </div>
     <script src="/static/custom_visualizations/js/jquery-1.11.0.min.js"></script>
+    <script src="/static/custom_visualizations/layui/layui.js"></script>
     <script src="/static/custom_visualizations/js/ProhibitCaching.js"></script>
     <script>
         var pCg = new pCg();

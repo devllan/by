@@ -559,6 +559,10 @@ var app = new Vue({
             ,
         dataDel: function (data) {
             console.log(data);
+        },
+        clr:function(index){
+            console.log(index);
+            index.value = '';
         }
     }
 });

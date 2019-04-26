@@ -81,8 +81,8 @@ setInterval(function () {
             var state1ul = document.getElementById("state1ul");
             var state0ul = document.getElementById("state0ul");
             // console.log(state1ul);
-            state1ul.innerHTML = "<li>识别完成</li>";
-            state0ul.innerHTML = "<li>识别中</li>";
+            state1ul.innerHTML = "<li>&nbsp;&nbsp;待处理影像</li>";
+            // state0ul.innerHTML = "<li>识别中</li>";
             console.log("remove");
             console.log(name);
             for (var i = 0; i < name.length; i++) {

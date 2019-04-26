@@ -23,6 +23,8 @@
             border-bottom: none;
             width: 80%;
             margin-left: 10%;
+            height: 540px;
+            overflow: auto;
         }
     </style>
 </head>
@@ -44,30 +46,38 @@
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
             <li class="layui-this" id="xguser">修改账户</li>
-            <li id="deluser">删除账户</li>
-            <li id="adduser">开设<span id="val"></span>账号</li>
+            <li id="deluser">账户管理</li>
+            <li id="adduser">增加<span id="val"></span>账号</li>
             <li id="hos">医院管理</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item  layui-show">
                 <form action="" class="layui-form">
                     <div id="zhucefk">
-                        <h2 class="h2">修改密码</h2>
-                        旧密码:<input type="password" class="tupe name" id="xgname">
-                        新密码:<input type="password" class="tupe pwd" id="xgpwd">
-                        确认密码:<input type="password" class="tupe pwd" id="xgpwd2">
-                        <a href="javascript:;" class="regd" id="xgregd">确认修改</a>
+                        <h2 class="h4">当前账户：<span id="nowuserr">root</span></h2>
+                        <p>原密码:<input type="password" class="tupe name" id="xgname"></p>
+                        <p>新密码:<input type="password" class="tupe pwd" id="xgpwd"></p>
+                        <p>重复新密码:<input type="password" class="tupe pwd" id="xgpwd2"></p>
+                        <p>
+                            <a href="javascript:;" class="regd" id="xgregd">修改</a>
+                            <a href="/api/ocr/val_tion_mob_user/" class="regd">放弃</a>
+                        </p>
                     </div>
                 </form>
             </div>
             <div class="layui-tab-item">
+                <p id="zhxx">
+                    <input type="text" placeholder="请输入查询内容(此处为检索账户信息)" id="ssyh_inp">
+                    <a href="javascript:;" id="ssyh_btn">查询</a>
+                </p>
                 <table id="tbtable" border="0" cellpadding="0">
                     <tr id="tbhead">
                         <td>账户名</td>
                         <!-- <td>邮箱</td> -->
-                        <td>上次登录时间</td>
+                        <td>权限</td>
+                        <td>状态</td>
+                        <td>联系方式</td>
                         <td>所属医院</td>
-                        <td>账户类型</td>
                         <td></td>
                     </tr>
                 </table>
@@ -75,42 +85,56 @@
             <div class="layui-tab-item">
                 <form action="">
                     <div id="zhucefk">
-                        账号名称:<input type="text" class="tupe name" id="zcname" placeholder="可以使用英文和数字，用户名不宜过长">
+                        <p id="zcp1">账号名称:<input type="text" class="tupe name" id="zcname"
+                                placeholder="可以使用英文和数字，用户名不宜过长"></p>
+                        <p>密码:<input type="password" class="tupe pwd" id="zcpwd"></p>
+                        <p>确认密码:<input type="password" class="tupe pwd" id="zcpwd2"></p>
+                        <p>
+                            <span id="ssyy">所属医院：</span>
+                            <select name="interest" lay-filter="select" id="select2">
+                                <option value="wxz" selected="" id="wxz2"></option>
+                                <!-- <option value="4f352d39">北京大学附属医院</option> -->
+                            </select>
+                        </p>
+                        <p>
+                            <a href="javascript:;" class="regd" id="zcregd">创建</a>
+                            <a href="/api/ocr/val_tion_mob_user/" class="regd">放弃</a>
+                        </p>
+
                         <!-- 邮箱:<input type="text" class="tupe pwd" id="zcyx"> -->
-                        密码:<input type="password" class="tupe pwd" id="zcpwd">
-                        确认密码:<input type="password" class="tupe pwd" id="zcpwd2">
+
+
                         <!-- <h4>您当前可以开设的账户类型为：</h4> -->
                         <!-- <span id="val" style="margin-left:50px"></span> -->
                         <!-- <select name="interest" lay-filter="select" id="select">
-                            <option value="wxz" selected="" id="wxz"></option>
-                            <option value="2" id="val1">管理账户</option>
-                            <option value="3" id="val2">普通账户</option>
-                        </select> -->
-                        <h4 style="margin-top:10px;" id="ssyy">所属医院：</h4>
-                        <select name="interest" lay-filter="select" id="select2">
-                            <option value="wxz" selected="" id="wxz2"></option>
-                            <!-- <option value="4f352d39">北京大学附属医院</option> -->
-                        </select>
-                        <a href="javascript:;" class="regd" id="zcregd">增加用户</a>
+                                    <option value="wxz" selected="" id="wxz"></option>
+                                    <option value="2" id="val1">管理账户</option>
+                                    <option value="3" id="val2">普通账户</option>
+                                </select> -->
+
+
                     </div>
                 </form>
             </div>
             <div class="layui-tab-item">
+                <div id="xzyybg">
+                    <p>
+                        医院名称<input type="text" placeholder="名称" id="hoscn">
+                    </p>
+                    <p>
+                        医院缩写<input type="text" placeholder="英文缩写" id="hosen">
+                    </p>
+                    <p>
+                        <a href="javascript:;" id="addhos_a">增加</a>
+                        <a href="/api/ocr/val_tion_mob_user/" class="regd">放弃</a>
+                    </p>
+                </div>
                 <table id="tbtable2" border="0" cellpadding="0">
-                    <tr id="addheader">
-                        <td>
-                            <input type="text" placeholder="新增医院名称" id="hoscn">
-                        </td>
-                        <td>
-                            <input type="text" placeholder="医院英文缩写" id="hosen">
-                        </td>
-                        <td>
-                            <a href="javascript:;" id="addhos_a">新增医院</a>
-                        </td>
-                    </tr>
                     <tr id="tbhead2">
                         <td>医院名称</td>
-                        <td>英文名称</td>
+                        <td>医院缩写</td>
+                        <td>管理员</td>
+                        <td>联系方式</td>
                         <!-- <td>创建时间</td> -->
                         <td></td>
                     </tr>

@@ -84,6 +84,7 @@ $('.submit').click(function () {
                         for (var j = 0; j < Data[i].hos.length; j++){
                             var id = Data[i].hos[j].id;
                             var logo = Data[i].hos[j].logo;
+                            var hoscn = Data[i].hos[j].hos_name_cn;
                         }
                             
                         console.log(logo)
@@ -93,6 +94,7 @@ $('.submit').click(function () {
                     window.sessionStorage.setItem("user_code", user_code);
                     window.sessionStorage.setItem("id", id);
                     window.sessionStorage.setItem("logo", logo);
+                    window.sessionStorage.setItem("hoscn", hoscn);
                     console.log(window.sessionStorage.getItem("user_code"));
                     console.log(window.sessionStorage.getItem("locqx"));
                     console.log(window.sessionStorage.getItem("id"));

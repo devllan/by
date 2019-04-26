@@ -139,19 +139,39 @@ header {
 }
 
 #zhucefk {
-    width: 400px;
+    width: 500px;
     /* height: 300px; */
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    background-color: rgba(210, 210, 210, 0.5);
+    /* border-radius: 15px; */
+    /* border: 1px solid rgba(0, 0, 0, 0.3); */
+    background-color: #F2F2F2;
     margin: 0 auto;
     padding-left: 5px;
+    margin-top: 30px;
     padding-top: 5px;
     padding-right: 5px;
+    box-sizing: border-box;
 }
 
-#zhucefk h4 {
-    margin-bottom: 10px;
+#nowuserr{
+    color: red;
+}
+#zhucefk p {
+    height: 40px;
+    text-align: center;
+}
+#zhucefk p:last-child{
+    padding-bottom: 20px;
+    margin-top: 20px;
+    /* box-sizing: border-box; */
+}
+#zhucefk p:last-child a:last-child{
+    margin-left: 50px;
+}
+.h4 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
 }
 
 .name {
@@ -167,9 +187,14 @@ header {
     margin-bottom: 10px;
 }
 
+#xgpwd2 {
+    margin-left: 2%;
+}
+
 .tupe {
-    display: block;
-    margin-top: 12px;
+    display: inline-block;
+    width: 60%;
+    box-sizing: border-box;
 }
 
 .danx {
@@ -181,18 +206,19 @@ header {
 }
 
 .regd {
-    display: block;
-    background-color: #009688;
-    width: 80%;
-    height: 40px;
-    font-size: 25px;
-    border-radius: 15px;
+    display: inline-block;
+    background-color: #169BD5;
+    width: 80px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 10px;
     margin: 0 aoto;
-    margin-left: 10%;
-    margin-top: 30px;
+    margin-left: 70px;
+    line-height: 30px;
+    /* margin-top: 30px; */
     text-align: center;
     color: white;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .tab {
@@ -222,25 +248,29 @@ header {
 }
 
 #tbhead {
-    background-color: #f2f2f2;
+    background-color: #64E016;
 }
 
 #tbtable {
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 #tbtable tr {
     height: 40px;
     border-bottom: 1px solid #f2f2f2;
+    color: black;
 }
 
 #tbtable td {
     color: #666;
+    border: 1px solid black;
+    text-align: center;
 }
 
 #tbhead td {
     font-size: 18px;
-    color: #666;
+    color: black;
     cursor: pointer;
 }
 
@@ -249,11 +279,12 @@ header {
     width: 60px;
     height: 26px;
     line-height: 26px;
-    background-color: rgba(186, 62, 69);
+    background-color: #FF0000;
     text-align: center;
     border-radius: 5px;
     color: white;
-    margin-top: 7px;
+    /* margin-top: 7px; */
+    margin-left: 15px;
 }
 
 .delete:hover {
@@ -265,7 +296,7 @@ header {
 }
 
 #tbhead2 {
-    background-color: #f2f2f2;
+    background-color: #64E016;  
 }
 
 #tbtable2 {
@@ -284,11 +315,12 @@ header {
     box-sizing: border-box;
     color: #666;
     text-align: center;
+    border: 1px solid black;
 }
 
 #tbhead2 td {
     font-size: 18px;
-    color: #666;
+    color: black;
     cursor: pointer;
 }
 
@@ -302,7 +334,6 @@ header {
     border-radius: 5px;
     color: white;
     margin-top: 7px;
-    cursor: pointer;
 }
 
 .delete2:hover {
@@ -327,35 +358,118 @@ header {
     padding: 20px;
     box-sizing: border-box;
 }
+
 #addhos_a {
     display: inline-block;
-    height: 35px;
-    width: 100px;
-    background-color: #009688;
+    height: 28px;
+    width: 80px;
+    background-color: #169BD5;
     color: white;
-    line-height: 35px;
-    border-radius: 15px;
+    line-height: 28px;
+    border-radius: 10px;
     text-align: center;
-    margin-top: 3px;
+    /* margin-top: 3px; */
     box-sizing: border-box;
+    font-size: 18px;
 }
-#addheader{
+
+#addheader {
     /* padding: 0 10px; */
     box-sizing: border-box;
     background-color: white;
     /* border-bottom: 1px solid #333!important; */
 }
-#addheader input{
+
+#addheader input {
     height: 35px;
     margin-top: 3px;
     box-sizing: border-box;
-    
+
 }
-.delhos{
+
+.delhos {
     display: none;
 }
+
 #select2 {
-    width: 100%;
+    width: 60%;
     height: 40px;
 
+}
+#zcname{
+    margin-left: 5px;
+}
+#zcpwd{
+    margin-left: 32px;
+}
+#zcpwd2{
+    margin-left: 5px;
+}
+#select2{
+    margin-left: -9px;
+}
+#zcp1{
+    margin-top: 40px;
+}
+#xzyybg{
+    width: 500px;
+    margin: 0 auto;
+    background-color: #F2F2F2;
+    padding-left: 5px;
+    margin-top: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+#xzyybg p{
+    padding-top: 5px;
+    height: 35px;
+    text-align: center;
+}
+#hoscn{
+    height: 20px;
+    margin-left:10px;
+    width:200px;
+}
+#hosen{
+    height: 20px;
+    margin-left:10px;
+    width:200px;
+}
+.ts{
+    display: inline-block;
+    width: 60px;
+    height: 26px;
+    line-height: 26px;
+    background-color: #64E016;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+    /* margin-top: 7px; */
+    /* margin-left: 15px; */
+    border: 1px solid black;
+}
+#zhxx{
+    text-align: center;
+    height: 40px;
+}
+#ssyh_inp{
+    width: 300px;
+    height: 30px;
+}
+#ssyh_btn{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #7A0108;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    /* margin-top: 7px; */
+    margin-left: 15px;
+    border: 1px solid black;
+}
+.delgost3{
+    display: none;
 }

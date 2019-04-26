@@ -96,18 +96,19 @@ header {
     /* height: 50px; */
     /* line-height: 50px; */
     text-align: center;
-    top: 100px;
+    /* top: 30px; */
+    left: 70px;
 }
-#search input:first-child{
+#search_input{
     border: none;
     height: 30px;
     width: 280px;
     border-radius: 10px;
 }
-#search a:last-child{
-    display: block;
+#search_btn{
+    display: inline-block;
     line-height: 50px;
-    background-color: #009688;
+    background-color: #7A0108;
     height: 30px;
     width: 80px;
     border: none;
@@ -115,5 +116,29 @@ header {
     border-radius: 5px;
     margin: 0 auto;
     margin-top: 30px;
+    margin-left: 10px;
     line-height: 30px;
+    box-sizing: border-box;
+}
+#test{
+    margin-top: 50px;
+}
+.layui-table-view{
+    width: 80%;
+    margin-left: 10%!important;
+    box-sizing: border-box;
+}
+.layui-table thead tr{
+    background-color: #64E016!important;
+    color: black!important;
+    
+}
+.layui-table thead tr th{
+    text-align: center!important;
+}
+.layui-table tr{
+    text-align: center!important;
+}
+.layui-laypage-em{
+    background-color: #7A0108!important;
 }

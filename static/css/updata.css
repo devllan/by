@@ -95,3 +95,31 @@ header {
     width: 100%;
     margin-top: 150px;
 }
+#testList{
+    background-color: #7A0108;
+    border-radius: 5px;
+}
+#testListActions{
+    background-color: #7A0108;
+    border-radius: 5px;
+}
+#table{
+    width: 98%;
+    box-sizing: border-box;
+    margin-left: 5px;
+    text-align: center;
+}
+#table td{
+    width: 100px;
+    
+}
+#thead{
+    background-color: #64E016!important;
+}
+#thead th{
+    color: black;
+
+}
+.demo-delete{
+    background-color: #7A0108!important;
+}
