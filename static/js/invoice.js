@@ -1,5 +1,5 @@
+//代码因功能迭代，功能减少，会有冗余的部分
 var url = '/api/ocr/validation/async_result/';
-// var url = './zuobiaonew.json';
 var state1 = document.querySelectorAll('.state1');
 var ghost = document.querySelectorAll('.ghost');
 console.log(state1);
@@ -89,8 +89,6 @@ var app = new Vue({
             cloud.style.display = 'none';
             var _this = this;
             var Datas = Datas;
-            // var srceach_details=JSON.parse(localStorage.srceach_details)  
-            // var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
             this.$http.post(url, Datas).then(function (data) {
                 var DataMsg = data.data.successResult;
                 for (i in DataMsg) {
@@ -146,7 +144,6 @@ var app = new Vue({
                     var Yproportion = YHeight / NHeight; //Y轴缩放比例
                     console.log(Yproportion);
                     // 循环赋值
-                    // for (var i = 0; i < coordinate_data.length; i++) {
                     console.log(coordinate_data)
                     var codte_data = coordinate_data[0].index_arr;
                     console.log(codte_data)
@@ -161,7 +158,6 @@ var app = new Vue({
                             var Newdiv = document.createElement("div");
                             Newdiv.setAttribute("id", "ShowDiv");
                             Newdiv.style.left = Left_arr[j] / Wproportion + 'px';
-                            // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                             Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                             Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                             Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
@@ -230,7 +226,6 @@ var app = new Vue({
                 var r = confirm("确定要删除一条原有数据吗？");
                 if (r == true) {
                     var url = "/api/ocr/validation/del_index_arr/";
-                    // var url = "./del.json";
                     this.$http.post(url, datass).then(function (data) {
                         var _this = this;
                         console.log(data);
@@ -238,7 +233,6 @@ var app = new Vue({
                         if (data.data.ret_cd == 200) {
                             for (i in DataMsg) {
                                 console.log(DataMsg[i])
-                                // _this.documentTypeList[i] = true;
                                 console.log(_this.documentTypeList.laboratory = true)
                                 console.log(_this.documentTypeList)
                                 _this.RenderingData = DataMsg[0];
@@ -266,7 +260,7 @@ var app = new Vue({
                             return;
                         }
                         _this.inData = data.data.successResult;
-                        //随动框
+                        //随动框，延迟500毫秒启动，否则会有bug
                         setTimeout(function () {
                             let ShowInput = document.getElementsByClassName("show");
                             var coordinate = data.data;
@@ -294,7 +288,6 @@ var app = new Vue({
                             var Yproportion = YHeight / NHeight; //Y轴缩放比例
                             console.log(Yproportion);
                             // 循环赋值
-                            // for (var i = 0; i < coordinate_data.length; i++) {
                             console.log(coordinate_data)
                             var codte_data = coordinate_data[0].index_arr;
                             console.log(codte_data)
@@ -336,18 +329,7 @@ var app = new Vue({
             //取旧的值
             var hospital = document.getElementById("hospital");
             var name = document.getElementById("name");
-            var age = document.getElementById("age");
-            var sex = document.getElementById("sex");
-            var report_time = document.getElementById("report_time");
-            var check_time = document.getElementById("check_time");
-            //科室
-            var department = document.getElementById("department");
-            //诊断
-            var diagnose = document.getElementById("diagnose");
-            //样本编号
-            var sample_number = document.getElementById("sample_number");
-            var index_number_total = document.getElementById("index_number_total");
-            var index_number_defined = document.getElementById("index_number_defined");
+            //所有的数据
             var shujv = app.RenderingData;
             console.log(app.RenderingData);
             console.log(app.RenderingData.index_arr);
@@ -365,8 +347,6 @@ var app = new Vue({
                     console.log(User);
                     console.log(Datas);
                     var url = '/api/ocr/validation/updata_data/?uuids=' + Datas.uuids + '&image_name=' + Datas.image_name + '&user=' + User;
-                    // var url = '/api/ocr/validation/updata_data/?';
-                    // var url = './zuobiao3.json/?uuids=' + Datas.uuids + '&image_name=' + Datas.image_name + '&user=' + User;
                     console.log(url);
                     console.log(shujv);
                     this.$http.post(url, shujv).then(function (data) {
@@ -377,13 +357,6 @@ var app = new Vue({
                             console.log("post成功");
                         }
                         console.log(cloud);
-                        // console.log(app.RenderingData);
-                        // for(let key in app.RenderingData){
-                        //     delete app.RenderingData[key];
-                        // }
-
-                        // console.log(app.RenderingData);
-                        // cloud.style.display = 'block';
                         console.log(data);
                     }, function (err) {
                         console.log(err);
@@ -392,7 +365,6 @@ var app = new Vue({
                     cloud.style.display = 'block';
                     $.ajax({
                         url: '/api/ocr/validation/supporting/',
-                        // url: './liebiao.json',
                         type: "get",
                         data: {
                             'user_code': user_code
@@ -404,7 +376,6 @@ var app = new Vue({
                             var listdiv = document.getElementById("listdiv");
                             var state1ul = document.getElementById("state1ul");
                             var state0ul = document.getElementById("state0ul");
-                            // console.log(state1ul);
                             state1ul.innerHTML = "<li>识别完成</li>";
                             state0ul.innerHTML = "<li>识别中</li>";
                             console.log("remove");
@@ -420,7 +391,6 @@ var app = new Vue({
                                 var zhezhao = document.createElement("div");
                                 //判断各种情况。
                                 for (var j = 0; j < name.length; j++) {
-                                    // console.log(img_name[j]);
                                     if (state === 1) {
                                         todolist.setAttribute("class", "state1");
                                         todolist.innerText = img_name;
@@ -440,7 +410,6 @@ var app = new Vue({
                             console.log(state1);
                             console.log(ghost);
                             var uuids;
-                            // ste
                             function idot() {
                                 for (i = 0; i < state1.length; i++) {
                                     state1[i].onclick = function () {

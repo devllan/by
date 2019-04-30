@@ -1,29 +1,3 @@
-// var submit = document.querySelector('.submit');
-// $(submit).click(function () {
-//     var login = $('input[name="login"]').val();
-//     var pwd = $('input[name="pwd"]').val();
-//     // console.log(submit)
-//     var obj = new Object();
-//     obj['user_code'] = login;
-//     obj['user_key'] = pwd;
-//     var Datas = JSON.stringify(obj);
-//     console.log(Datas)
-//     $.ajax({
-//         type: 'post',
-//         url: "/api/ocr/val_visualization/",
-//         data: Datas,
-//         success: function (info) {
-//             if (info.ret_cd === 403) {
-//                 alert('登陆失败')
-//             } else if (info.ret_cd === 200) {
-//                 alert('登陆成功')
-//                 window.location = '/api/ocr/val_tion_index/'
-//             }
-//         }
-//     })
-// })
-
-
 $(document).keypress(function (e) {
     // 回车键事件  
     if (e.which == 13) {
@@ -48,7 +22,6 @@ var open = 0;
 $('.submit').click(function () {
     var login = $('input[name="login"]').val();
     var pwd = $('input[name="pwd"]').val();
-    // var code = $('input[name="code"]').val();
     if (login == '') {
         alert('请输入您的账号');
     } else if (pwd == '') {
@@ -69,11 +42,6 @@ $('.submit').click(function () {
                 if (data.ret_cd === 403) {
                     alert('无权登录');
                 } else if (data.ret_cd === 200) {
-                    // for (s in data) {
-                    //     localStorage[s] = data[s];
-                    // }
-                    // localStorage['time'] = date;
-                    // localStorage.successResult = JSON.stringify(data.successResult[0]);
                     console.log(data)
                     var Data = data.successResult;
                     for (var i = 0; i < Data.length; i++) {
@@ -85,16 +53,15 @@ $('.submit').click(function () {
                             var id = Data[i].hos[j].id;
                             var logo = Data[i].hos[j].logo;
                             var hoscn = Data[i].hos[j].hos_name_cn;
-                        }
-                            
+                        }   
                         console.log(logo)
                         console.log(locqx)
                     }
-                    window.sessionStorage.setItem("locqx", locqx);
-                    window.sessionStorage.setItem("user_code", user_code);
-                    window.sessionStorage.setItem("id", id);
-                    window.sessionStorage.setItem("logo", logo);
-                    window.sessionStorage.setItem("hoscn", hoscn);
+                    window.sessionStorage.setItem("locqx", locqx);//当前用户权限
+                    window.sessionStorage.setItem("user_code", user_code);//用户名？
+                    window.sessionStorage.setItem("id", id);//医院id
+                    window.sessionStorage.setItem("logo", logo);//医院logo  唯一标识？
+                    window.sessionStorage.setItem("hoscn", hoscn);//医院名称
                     console.log(window.sessionStorage.getItem("user_code"));
                     console.log(window.sessionStorage.getItem("locqx"));
                     console.log(window.sessionStorage.getItem("id"));

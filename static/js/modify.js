@@ -1,17 +1,12 @@
 //左侧列表数据请求
-// var obj = new Object();
 var user_code = document.querySelector('#User_Name').innerText;
 console.log(user_code);
-// obj['user_code'] = user_code;
-// var Datas = JSON.stringify(obj);
 $.ajax({
     url: '/api/ocr/validation/supporting/',
-    // url: './liebiao.json',
     type: "get",
     data: {
         'user_code': user_code
     },
-    // dataType: "json",
     //请求成功时的回调函数，info为后端返回的数据
     success: function (info) {
         console.log(info);
@@ -24,17 +19,11 @@ $.ajax({
             var uuids = name[i].uuids;
             var user = name[i].user; //上传者
             var create_time = name[i].create_time; //上传时间
-            // console.log(name);
-            // console.log(img_name);
-            // console.log(state);
-            // console.log(audit_state);
-            // console.log(uuids);
             var todolist = document.createElement("p");
             var ghost = document.createElement("p");
             var zhezhao = document.createElement("div");
-            //判断各种情况。
+            //判断各种情况，生成列表，现版本无需展示未跑完ocr的单据
             for (var j = 0; j < name.length; j++) {
-                // console.log(img_name[j]);
                 if (state === 1 && audit_state === 0) {
                     todolist.setAttribute("class", "state1");
                     todolist.setAttribute("title", "上传者：" + user + ";  原图名称:" + org_img + ";  上传时间:" + create_time);
@@ -44,14 +33,9 @@ $.ajax({
                     ghost.innerText = uuids;
                     $("#state1ul").append(ghost);
                 } else if (state === 0) {
-                    // zhezhao.setAttribute("id", "zhezhao");
                     todolist.setAttribute("class", "state0");
                     todolist.innerText = img_name;
                     $("#state0ul").append(todolist);
-                    // ghost.setAttribute("class", "ghost");
-                    // ghost.innerText = uuids;
-                    // $(".state0ul").append(ghost);
-                    // console.log(ghost.innerHTML);
                 }
             }
         }
@@ -62,17 +46,14 @@ $.ajax({
 //定时刷新左侧列表栏
 var listdiv = document.getElementsByClassName('listdiv');
 console.log(listdiv)
-// listdiv.location.reload()
+//六秒一刷新
 setInterval(function () {
-    // $(".listdiv").load(location.href+" .listdiv");
     $.ajax({
         url: '/api/ocr/validation/supporting/',
-        // url: './liebiao.json',
         type: "get",
         data: {
             'user_code': user_code
         },
-        // dataType: "json",
         //请求成功时的回调函数，info为后端返回的数据
         success: function (info) {
             console.log(info);
@@ -80,7 +61,6 @@ setInterval(function () {
             var listdiv = document.getElementById("listdiv");
             var state1ul = document.getElementById("state1ul");
             var state0ul = document.getElementById("state0ul");
-            // console.log(state1ul);
             state1ul.innerHTML = "<li>&nbsp;&nbsp;待处理影像</li>";
             // state0ul.innerHTML = "<li>识别中</li>";
             console.log("remove");
@@ -98,7 +78,6 @@ setInterval(function () {
                 var zhezhao = document.createElement("div");
                 //判断各种情况。
                 for (var j = 0; j < name.length; j++) {
-                    // console.log(img_name[j]);
                     if (state === 1 && audit_state === 0) {
                         todolist.setAttribute("class", "state1");
                         todolist.setAttribute("title", "上传者：" + user + ";  原图名称:" + org_img + ";  上传时间:" + create_time);
@@ -111,14 +90,9 @@ setInterval(function () {
                         ghost.innerText = uuids;
                         $("#state1ul").append(ghost);
                     } else if (state === 0) {
-                        // zhezhao.setAttribute("id", "zhezhao");
                         todolist.setAttribute("class", "state0");
                         todolist.innerText = img_name;
                         $("#state0ul").append(todolist);
-                        // ghost.setAttribute("class", "ghost");
-                        // ghost.innerText = uuids;
-                        // $(".state0ul").append(ghost);
-                        // console.log(ghost.innerHTML);
                     }
                 }
             }
@@ -162,13 +136,10 @@ setInterval(function () {
                         console.log(uuids)
                         wtpic1.innerText = '当前查看:';
                         wtpic.innerText = uuids;
-                        // console.log(this);
-                        // ShowDiv(nx, uuids);
                     };
                 };
             }
             idot();
         }
     });
-
 }, 6000)

@@ -5,6 +5,7 @@ var hoscncn = window.sessionStorage.getItem("hoscn"); //医院名称
 var qx;
 console.log(locqx);
 console.log(user_code);
+//各种管理员所能看到的不同界面
 if (locqx == 1) {
     var val = document.getElementById('val');
     val.innerText = '管理员';
@@ -17,10 +18,6 @@ if (locqx == 1) {
     val.innerText = '普通用户';
     qx = 3;
     console.log(locqx);
-    // var child1 = document.getElementById("ssyy");
-    // var child = document.getElementById("select2");
-    // child.parentNode.removeChild(child);
-    // child1.parentNode.removeChild(child1);
 } else if (locqx == 3) {
     var deluser = document.getElementById('deluser');
     var adduser = document.getElementById('adduser');
@@ -42,7 +39,6 @@ addusertab.onclick = function () {
     if (locqx == 1) {
         $.ajax({
             url: '/mob_user/hos/queryset_hos/',
-            // url: './hos.json',
             type: "post",
             data: '',
             success: function (info) {
@@ -66,7 +62,6 @@ addusertab.onclick = function () {
                     option.setAttribute("class", "option");
                     option.setAttribute("value", name[i].id);
                     option.innerText = name[i].hos_name_cn;
-                    // console.log(hosary[h]);
                     $('#select2').append(option);
                 }
             }
@@ -84,7 +79,6 @@ addusertab.onclick = function () {
         option.setAttribute("class", "option");
         option.setAttribute("value", hospital_id);
         option.innerText = hoscncn;
-        // console.log(hosary[h]);
         $('#select2').append(option);
     }
 }
@@ -93,14 +87,8 @@ regd.onclick = function () {
     console.log('beidianle');
     var login = document.querySelector('#zcname').value;
     var pwd = document.querySelector('#zcpwd').value;
-    // var qx = document.querySelector('#select').value;
     var qx2 = document.querySelector('#select2').value;
     var pwd2 = document.querySelector('#zcpwd2').value;
-    // var yx = document.querySelector('#zcyx').value;
-    // var pattern = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-    //     str = yx;
-    // var tf = pattern.test(str);
-    // console.log(tf);
     if (login == '') {
         alert("您还未填写账户名");
     } else if (qx == 'wxz') {
@@ -123,12 +111,10 @@ regd.onclick = function () {
         obj['id'] = qx2;
         console.log(login);
         console.log(pwd);
-        // var Datas = JSON.stringify(obj);
         console.log(qx);
         $.ajax({
             type: 'post',
             url: '/mob_user/add_mob_user/',
-            // url: './adduser.json',
             data: obj,
             success: function (data) {
                 if (data.errorMsg == 'Username exists') {
@@ -174,7 +160,6 @@ xgregd.onclick = function () {
         console.log(login);
         console.log(pwd);
         console.log(obj);
-        // var Datas = JSON.stringify(obj);
         console.log(obj);
         var Datas = {
             'oldpassword': login,
@@ -184,7 +169,6 @@ xgregd.onclick = function () {
         $.ajax({
             type: 'post',
             url: '/mob_user/changepwd/',
-            // url: './changepwd.json',
             data: Datas,
             success: function (data) {
                 console.log(data);
@@ -200,16 +184,11 @@ xgregd.onclick = function () {
                     dpwd.value = '';
                     dpwd2.value = '';
                     alert('修改完成，跳回到登录页面');
-                    // window.sessionStorage.clear();
-                    // console.log('clear session')
-                    // window.location = '/api/ocr/val_tion_login/'
-                    // window.location = './login.html'
                 } else if (data.ret_cd == 500) {
                     alert('服务器错误:' + data.errorMsg)
                 } else if (data.retcd == 403) {
                     alert('您没有权限:' + data.errorMsg)
                 }
-
             },
             error: function (err) {
                 alert('请求失败');
@@ -222,10 +201,8 @@ var deluser = document.getElementById('deluser');
 console.log(deluser);
 deluser.onclick = function deluser() {
     console.log(user_code)
-
     $.ajax({
         url: '/mob_user/queryset_mob_user/',
-        // url: './deluser.json',
         type: "post",
         data: '',
         success: function (info) {
@@ -266,7 +243,6 @@ deluser.onclick = function deluser() {
                 tduser.setAttribute("class", "tduser");
                 tduser.innerText = username;
                 $("#tr" + i).append(tduser);
-
                 //用户权限
                 tdqx.setAttribute("class", "tdqx");
                 if (is_permissions == '1') {
@@ -292,18 +268,15 @@ deluser.onclick = function deluser() {
                 // } else {
                 //     tdtime.innerText = last_login;
                 // }
-
                 // $("#tr" + i).append(tdtime);
                 //电话
                 phone.setAttribute("class", "phone");
                 phone.innerText = '';
                 $("#tr" + i).append(phone);
-
                 //医院所属
                 tdhos.setAttribute("class", "tdhos");
                 tdhos.innerText = hos;
                 $("#tr" + i).append(tdhos);
-
                 tdemail.setAttribute("id", "tdemail" + i);
                 $("#tr" + i).append(tdemail);
                 //权限提升
@@ -328,23 +301,19 @@ deluser.onclick = function deluser() {
             //删除一条账户
             var del = document.querySelectorAll('.delete');
             console.log(del);
-
             function idot() {
                 for (i = 0; i < del.length; i++) {
                     del[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
-                        // var delgost = document.querySelectorAll('delete');
                         del = this.innerHTML;
                         delgostid = this.nextElementSibling.innerHTML;
                         var r = confirm("确定要删除吗？");
                         if (r == true) {
-                            // var url = "./del.json";
                             var url = "/mob_user/mob_user_delete/";
                             var datas = {
                                 'id': delgostid,
                             }
-                            // var datass = JSON.stringify(datas);
                             $.ajax({
                                 url: url,
                                 type: "post",
@@ -364,10 +333,6 @@ deluser.onclick = function deluser() {
                                         alert('请求出错，错误：' + info.errorMsg)
                                         window.location.reload();
                                     }
-                                    // var _this = this;
-                                    // console.log(_this);
-                                    // var parent = _this.parentNode;
-                                    // console.log(parent);
                                 }
                             })
                         }
@@ -378,30 +343,25 @@ deluser.onclick = function deluser() {
             //提升等级
             var ts = document.querySelectorAll('.ts');
             console.log(ts);
-
             function idotts() {
                 for (i = 0; i < ts.length; i++) {
                     ts[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
-                        // var delgost = document.querySelectorAll('delete');
                         ts = this.innerHTML;
                         is_permissions = this.nextElementSibling.innerHTML;
                         user_id = this.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
                         if (is_permissions == 2) {
                             alert('您不能提升管理用户');
                         } else if (is_permissions == 3) {
-                            // console.log(user_id,is_permissions)
                             var r = confirm("确定要提升权限吗？");
                             if (r == true) {
-                                // var url = "./del.json";
                                 var url = "/mob_user/Empower_user/";
                                 is_permissions = parseInt(is_permissions) + -1;
                                 var datas = {
                                     'user_id': user_id,
                                     'is_permissions': is_permissions
                                 }
-                                // var datass = JSON.stringify(datas);
                                 $.ajax({
                                     url: url,
                                     type: "post",
@@ -421,15 +381,10 @@ deluser.onclick = function deluser() {
                                             alert('请求出错，错误：' + info.errorMsg)
                                             window.location.reload();
                                         }
-                                        // var _this = this;
-                                        // console.log(_this);
-                                        // var parent = _this.parentNode;
-                                        // console.log(parent);
                                     }
                                 })
                             }
                         }
-
                     };
                 };
             }
@@ -445,7 +400,6 @@ ssyh_btn.onclick = function deluser() {
     console.log(ssyh_inp);
     $.ajax({
         url: '/mob_user/queryset_mob_user/',
-        // url: './deluser.json',
         type: "post",
         data: {
             name: ssyh_inp
@@ -488,7 +442,6 @@ ssyh_btn.onclick = function deluser() {
                 tduser.setAttribute("class", "tduser");
                 tduser.innerText = username;
                 $("#tr" + i).append(tduser);
-
                 //用户权限
                 tdqx.setAttribute("class", "tdqx");
                 if (is_permissions == '1') {
@@ -514,18 +467,15 @@ ssyh_btn.onclick = function deluser() {
                 // } else {
                 //     tdtime.innerText = last_login;
                 // }
-
                 // $("#tr" + i).append(tdtime);
                 //电话
                 phone.setAttribute("class", "phone");
                 phone.innerText = '';
                 $("#tr" + i).append(phone);
-
                 //医院所属
                 tdhos.setAttribute("class", "tdhos");
                 tdhos.innerText = hos;
                 $("#tr" + i).append(tdhos);
-
                 tdemail.setAttribute("id", "tdemail" + i);
                 $("#tr" + i).append(tdemail);
                 //权限提升
@@ -545,28 +495,23 @@ ssyh_btn.onclick = function deluser() {
                 delgost.setAttribute("class", "delgost");
                 delgost.innerText = delid;
                 $("#tdemail" + i).append(delgost);
-
             };
             //删除一条账户
             var del = document.querySelectorAll('.delete');
             console.log(del);
-
             function idot() {
                 for (i = 0; i < del.length; i++) {
                     del[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
-                        // var delgost = document.querySelectorAll('delete');
                         del = this.innerHTML;
                         delgostid = this.nextElementSibling.innerHTML;
                         var r = confirm("确定要删除吗？");
                         if (r == true) {
-                            // var url = "./del.json";
                             var url = "/mob_user/mob_user_delete/";
                             var datas = {
                                 'id': delgostid,
                             }
-                            // var datass = JSON.stringify(datas);
                             $.ajax({
                                 url: url,
                                 type: "post",
@@ -586,10 +531,6 @@ ssyh_btn.onclick = function deluser() {
                                         alert('请求出错，错误：' + info.errorMsg)
                                         window.location.reload();
                                     }
-                                    // var _this = this;
-                                    // console.log(_this);
-                                    // var parent = _this.parentNode;
-                                    // console.log(parent);
                                 }
                             })
                         }
@@ -600,30 +541,25 @@ ssyh_btn.onclick = function deluser() {
             //提升等级
             var ts = document.querySelectorAll('.ts');
             console.log(ts);
-
             function idotts() {
                 for (i = 0; i < ts.length; i++) {
                     ts[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
-                        // var delgost = document.querySelectorAll('delete');
                         ts = this.innerHTML;
                         is_permissions = this.nextElementSibling.innerHTML;
                         user_id = this.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
                         if (is_permissions == 2) {
                             alert('您不能提升管理用户');
                         } else if (is_permissions == 3) {
-                            // console.log(user_id,is_permissions)
                             var r = confirm("确定要提升权限吗？");
                             if (r == true) {
-                                // var url = "./del.json";
                                 var url = "/mob_user/Empower_user/";
                                 is_permissions = parseInt(is_permissions) + -1;
                                 var datas = {
                                     'user_id': user_id,
                                     'is_permissions': is_permissions
                                 }
-                                // var datass = JSON.stringify(datas);
                                 $.ajax({
                                     url: url,
                                     type: "post",
@@ -643,15 +579,10 @@ ssyh_btn.onclick = function deluser() {
                                             alert('请求出错，错误：' + info.errorMsg)
                                             window.location.reload();
                                         }
-                                        // var _this = this;
-                                        // console.log(_this);
-                                        // var parent = _this.parentNode;
-                                        // console.log(parent);
                                     }
                                 })
                             }
                         }
-
                     };
                 };
             }
@@ -666,7 +597,6 @@ hos.onclick = function delhoss() {
     console.log(user_code)
     $.ajax({
         url: '/mob_user/hos/queryset_hos/',
-        // url: './hos.json',
         type: "post",
         data: '',
         success: function (info) {
@@ -692,7 +622,6 @@ hos.onclick = function delhoss() {
                 var hostr = document.createElement("tr");
                 var hosa = document.createElement("a");
                 var delhos = document.createElement('span')
-
                 hostr.setAttribute("id", "hostr" + i);
                 hostr.setAttribute("class", "newtr");
                 $("#tbtable2").append(hostr);
@@ -715,11 +644,9 @@ hos.onclick = function delhoss() {
                 //删除按钮
                 hosatd.setAttribute("class", "hosatd" + i);
                 $("#hostr" + i).append(hosatd);
-
                 hosa.setAttribute("class", "delete2");
                 hosa.innerText = '删除';
                 $(".hosatd" + i).append(hosa);
-
                 delhos.setAttribute("class", "delhos");
                 delhos.innerText = id;
                 $(".hosatd" + i).append(delhos);
@@ -727,24 +654,20 @@ hos.onclick = function delhoss() {
             //删除一条账户
             var del = document.querySelectorAll('.delete2');
             console.log(del);
-
             function idot2() {
                 for (i = 0; i < del.length; i++) {
                     del[i].onclick = function () {
                         console.log("dianjile");
                         console.log(this);
-                        // var delgost = document.querySelectorAll('delete');
                         del = this.innerHTML;
                         delgostid = this.nextElementSibling.innerHTML;
                         var r = confirm("确定要删除吗？");
                         if (r == true) {
-                            // var url = "./del.json";
                             var datas = {
                                 'id': delgostid,
                             }
                             $.ajax({
                                 url: '/mob_user/hos/delete_hos/',
-                                // url: './hos.json',
                                 type: "post",
                                 data: datas,
                                 success: function (info) {
@@ -786,7 +709,6 @@ addhos_a.onclick = function addhos() {
         $.ajax({
             type: 'post',
             url: '/mob_user/hos/add_hos/',
-            // url: './hos.json',
             data: {
                 hos_name_cn: hoscn,
                 hos_name_en: hosen,
@@ -819,7 +741,6 @@ addhos_a.onclick = function addhos() {
                         var hostr = document.createElement("tr");
                         var hosa = document.createElement("a");
                         var delhos = document.createElement('span')
-
                         hostr.setAttribute("id", "hostr" + i);
                         hostr.setAttribute("class", "newtr");
                         $("#tbtable2").append(hostr);
@@ -842,11 +763,9 @@ addhos_a.onclick = function addhos() {
                         //删除按钮
                         hosatd.setAttribute("class", "hosatd" + i);
                         $("#hostr" + i).append(hosatd);
-
                         hosa.setAttribute("class", "delete2");
                         hosa.innerText = '删除';
                         $(".hosatd" + i).append(hosa);
-
                         delhos.setAttribute("class", "delhos");
                         delhos.innerText = id;
                         $(".hosatd" + i).append(delhos);
@@ -854,24 +773,20 @@ addhos_a.onclick = function addhos() {
                     //删除一条账户
                     var del = document.querySelectorAll('.delete2');
                     console.log(del);
-
                     function idot2() {
                         for (i = 0; i < del.length; i++) {
                             del[i].onclick = function () {
                                 console.log("dianjile");
                                 console.log(this);
-                                // var delgost = document.querySelectorAll('delete');
                                 del = this.innerHTML;
                                 delgostid = this.nextElementSibling.innerHTML;
                                 var r = confirm("确定要删除吗？");
                                 if (r == true) {
-                                    // var url = "./del.json";
                                     var datas = {
                                         'id': delgostid,
                                     }
                                     $.ajax({
                                         url: '/mob_user/hos/delete_hos/',
-                                        // url: './hos.json',
                                         type: "post",
                                         data: datas,
                                         success: function (data) {
@@ -897,13 +812,10 @@ addhos_a.onclick = function addhos() {
                     }
                     idot2();
                 }
-
             },
             error: function (err) {
                 alert('请求失败');
             }
         });
-
     }
-
 }

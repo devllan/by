@@ -1,5 +1,4 @@
 var url = '/api/ocr/validation/async_result/';
-// var url = './zuobiaonew.json';
 var state1 = document.querySelectorAll('.state1');
 var ghost = document.querySelectorAll('.ghost');
 console.log(state1);
@@ -25,12 +24,10 @@ function idot() {
             }
             console.log(Datas)
             app.qingqiu(Datas);
-            // ShowDiv(nx, uuids);
         };
     };
 }
 idot();
-// console.log(uuids);
 var dir = 0,
     der = 1;
 var app = new Vue({
@@ -68,16 +65,11 @@ var app = new Vue({
         init: function () {},
         //发送请求
         qingqiu: function (Datas) {
-            // var cloud = document.getElementById('cloud');
-            // cloud.style.display = 'none';
             var _this = this;
-            // var srceach_details=JSON.parse(localStorage.srceach_details)  
-            // var url='/api/ocr/validation/the_case_all/?business_id='+srceach_details.business_id+'&user_code='+localStorage.user_code;
             this.$http.post(url, Datas).then(function (data) {
                 var DataMsg = data.data.successResult;
                 for (i in DataMsg) {
                     console.log(DataMsg[i])
-                    // _this.documentTypeList[i] = true;
                     console.log(_this.documentTypeList.laboratory = true)
                     console.log(_this.documentTypeList)
                     _this.RenderingData = DataMsg[0];
@@ -138,7 +130,6 @@ var app = new Vue({
                             var Newdiv = document.createElement("div");
                             Newdiv.setAttribute("id", "ShowDiv");
                             Newdiv.style.left = Left_arr[j] / Wproportion + 'px';
-                            // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                             Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                             Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                             Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
@@ -152,7 +143,6 @@ var app = new Vue({
                         });
                     }
                 }, 500)
-
             }, function (err) {
                 console.log(err);
             });
@@ -183,7 +173,6 @@ var app = new Vue({
             var nxx = nx;
             console.log(nxx);
             console.log(index)
-            // var user = document.getElementById("User_Name").innerHTML;
             var datas = {
                 'index_id': index_id,
                 'uuids': nxx,
@@ -198,14 +187,12 @@ var app = new Vue({
                 var r = confirm("确定要删除一条原有数据吗？");
                 if (r == true) {
                     var url = "/api/ocr/validation/del_index_arr/";
-                    // var url = "./del.json";
                     this.$http.post(url, datass).then(function (data) {
                         var _this = this;
                         console.log(data);
                         var DataMsg = data.data.successResult;
                         for (i in DataMsg) {
                             console.log(DataMsg[i])
-                            // _this.documentTypeList[i] = true;
                             console.log(_this.documentTypeList.laboratory = true)
                             console.log(_this.documentTypeList)
                             _this.RenderingData = DataMsg[0];
@@ -251,11 +238,9 @@ var app = new Vue({
                             console.log(NHeight)
                             // 缩放比例   动态比例 根据比例调整展示框大小
                             var Wproportion = YWidth / NWidth; //X轴缩放比例
-                            // console.log(Wproportion);
                             var Yproportion = YHeight / NHeight; //Y轴缩放比例
                             console.log(Yproportion);
                             // 循环赋值
-                            // for (var i = 0; i < coordinate_data.length; i++) {
                             console.log(coordinate_data)
                             var codte_data = coordinate_data[0].index_arr;
                             console.log(codte_data)
@@ -269,16 +254,11 @@ var app = new Vue({
                                     var Newdiv = document.createElement("div");
                                     Newdiv.setAttribute("id", "ShowDiv");
                                     Newdiv.style.left = Left_arr[j] / Wproportion + 'px';
-                                    // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                                     Newdiv.style.width = Width_arr[j] / Wproportion + 'px';
                                     Newdiv.style.height = Height_arr[j] / Yproportion + 'px';
                                     Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
-                                    // console.log((parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion);
-                                    // console.log((parseInt(Top_arr[j])/ Yproportion - parseInt(Height_arr[j])/ Yproportion) );
                                     console.log(Height_arr[j])
                                     console.log(parseInt(Top_arr[j]))
-                                    // Newdiv.style.top = (parseInt(Top_arr[j]) - parseInt(Height_arr[j])) / Yproportion + 'px';
-                                    // Newdiv.style.top = Top_arr[j] / Yproportion + 'px';
                                     $(".imgButBox").append(Newdiv);
                                 }
                                 //鼠标离开删除展示框
@@ -297,7 +277,6 @@ var app = new Vue({
         },
         //提交按钮点击事件
         submit: function () {
-
             console.log('submit');
             //取旧的值
             var hospital = document.getElementById("hospital");
@@ -325,23 +304,16 @@ var app = new Vue({
             if (r == true) {
                 if (hospital.value.length == 0) {
                     alert('请填写医院');
-                    // console.log("hospitalkong")
                 } else if (name.value.length == 0) {
-                    // console.log("namekong")
                     alert('请填写姓名');
                 } else {
                     console.log(User);
-                    // console.log(Datas);
-                    // var url = '/api/ocr/validation/updata_data/?uuids=' + Datas.uuids + '&image_name=' + Datas.image_name + '&user=' + User;
-                    // var url = '/api/ocr/validation/updata_data/';
                     var url = '/api/ocr/validation/updata_data/?uuids=' + shujv.uuid + '&image_name=' + shujv.image_name + '&user=' + User;
-                    // var url = './zuobiao3.json';
                     console.log(url);
                     console.log(shujv);
                     this.$http.post(url, shujv).then(function (data) {
                         console.log(data)
                         console.log(data.data.ret_cd)
-                        // var _this = this;
                         if (data.data.ret_cd == '403') {
                             alert("您没有权限");
                         } else if (data.data.ret_cd == '200') {
@@ -354,13 +326,8 @@ var app = new Vue({
                     }, function (err) {
                         console.log(err);
                     });
-
                     var cloud = document.getElementById('cloud');
                     cloud.style.display = 'block';
-
-                    
-                    // console.log(app.RenderingData = {});
-                    // console.log(cloud);
                 }
             } else {
                 console.log("postquxiao")
@@ -371,7 +338,6 @@ var app = new Vue({
             return true
         },
         // 旋转效果
-
         direction: function (data) {
                 var ImaGes = document.getElementsByClassName('imgButBox')[0];
                 console.log(ImaGes);

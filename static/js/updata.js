@@ -1,10 +1,10 @@
 var locqx = window.sessionStorage.getItem("locqx");
 console.log(locqx)
+//超管不可以上传
 if (locqx == 1) {
     var upload = document.getElementById('lodall');
     upload.style.display = 'none';
     alert("您的账户类型不支持上传");
-
 }
 var fun1, type_id_txt, purpose = new purpose(),
     type_id = purpose.GetQueryString('type'),
@@ -13,7 +13,6 @@ var fun1, type_id_txt, purpose = new purpose(),
 var Suffix = '';
 var files_type = 'img';
 var upload_Url = '/api/ocr/validation/async_analysis/';
-// var upload_Url = './fkupdata.json';
 /*
  * 判断当前上传类型
  * */
@@ -62,7 +61,6 @@ switch (type_id) {
         break;
 }
 // 显示 上传类型
-// document.getElementById('title_type_txt').innerHTML=type_id_txt;
 // 需要提交的 参数 type：类型 user_code：账户名
 data_list_obj['type'] = 1002;
 var user_code = document.querySelector('#User_Name').innerText;
@@ -143,10 +141,8 @@ layui.use('upload', function () {
                 layer.load(); //上传loading
                 var BT_inp = document.getElementById('BT_inp'+ k);
                 console.log(BT_inp);
-                
                 k=1;
-                console.log($('#BT_inp1').val());
-                
+                console.log($('#BT_inp1').val());  
             },
             done: function (res, index, upload) {
                 if (res.errorMsg == "user_code is None") {
@@ -201,10 +197,6 @@ layui.use('upload', function () {
      * 上传方法，判断如果为 案件上传方式 则直接使用当前方法
      * */
     fun1 = function () {
-
-        // if (BT_inp.value === '') {
-        //     layer.tips('Hi，这里是必填项', '#yrwu');
-        // } else {
         var fe = new FormData();
         var index = layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
@@ -214,10 +206,7 @@ layui.use('upload', function () {
             layer.msg('请选择图片！');
             return;
         } else {
-
             $('#testListAction').click();
         }
-
     }
-    //     }
 });
